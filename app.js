@@ -11,17 +11,19 @@ app.use(expressLayouts);
 
 // Remove trailing slash if it exists, for SEO purposes.  Serve static html files without file extension only.
 app.use((req, res, next) => {
-    const test = /\?[^]*\//.test(req.url);
-    if (req.url.substr(-1) === '/' && req.url.length > 1 && !test)
-        res.redirect(301, req.url.slice(0, -1));
-    else if (req.url.endsWith('.html'))
-        res.redirect(301, req.url.slice(0, -5));
+    if (req.originalUrl.substr(-1) === '/' && req.originalUrl.length > 1)
+        res.redirect(301, req.originalUrl.slice(0, -1));
+    else if (req.originalUrl.endsWith('.html'))
+        res.redirect(301, req.originalUrl.slice(0, -5));
+    else if (req.originalUrl.substr(-5) === 'index')
+        res.redirect(301, req.originalUrl.slice(0, -5));
     else
         next();
 });
 
-app.use(express.static(__dirname + '/public', {
-    extensions: ['html'],
+app.use('/', express.static(__dirname + '/public', {
+    redirect: false,
+    extensions: ['html']
 }));
 
 app.use(bodyParser.urlencoded({

@@ -4,7 +4,15 @@ const sass = require('gulp-sass');
 const plumber = require('gulp-plumber');
 const autoprefixer = require('gulp-autoprefixer');
 const concat = require('gulp-concat');
+const ejs = require('gulp-ejs');
 const browsersync = require('browser-sync').create();
+const low = require('lowdb');
+const FileSync = require('lowdb/adapters/FileSync');
+const adapter = new FileSync('db.json');
+const db = low(adapter);
+const sys = require('sys');
+const exec = require('child_process').exec;
+const fs = require('fs');
 
 function browserSync(done) {
     browsersync.init({
@@ -42,10 +50,15 @@ function scripts() {
         .pipe(browsersync.stream());
 }
 
+function staticfiles(done) {
+    exec('node ./tools/staticpages.js');
+    done();
+}
+
 function watchFiles() {
     gulp.watch("./assets/scss/**/*", css);
     gulp.watch("./assets/js/**/*", scripts);
-    gulp.watch("./views/**/*", browserSyncReload);
+    gulp.watch("./views/**/*", staticfiles, browserSyncReload);
 }
 
 const build = gulp.series(gulp.parallel(css, scripts));

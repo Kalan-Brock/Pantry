@@ -6,6 +6,8 @@ const FileSync = require('lowdb/adapters/FileSync');
 const adapter = new FileSync('db.json');
 const db = low(adapter);
 
+router.get('/', express.static('./public/blog/index.html'));
+
 // Blog Page
 router.get('/', (req, res) => {
     let posts = db.get('blog_posts').value();
