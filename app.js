@@ -8,7 +8,21 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
-app.use(express.static(__dirname + '/public'));
+
+// Remove trailing slash if it exists, for SEO purposes.  Serve static html files without file extension only.
+app.use((req, res, next) => {
+    const test = /\?[^]*\//.test(req.url);
+    if (req.url.substr(-1) === '/' && req.url.length > 1 && !test)
+        res.redirect(301, req.url.slice(0, -1));
+    else if (req.url.endsWith('.html'))
+        res.redirect(301, req.url.slice(0, -5));
+    else
+        next();
+});
+
+app.use(express.static(__dirname + '/public', {
+    extensions: ['html'],
+}));
 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -18,15 +32,6 @@ app.use(bodyParser.urlencoded({
  * Parses the text as JSON and exposes the resulting object on req.body.
  */
 app.use(bodyParser.json());
-
-// Remove trailing slash if it exists, for SEO purposes.
-app.use((req, res, next) => {
-    const test = /\?[^]*\//.test(req.url);
-    if (req.url.substr(-1) === '/' && req.url.length > 1 && !test)
-        res.redirect(301, req.url.slice(0, -1));
-    else
-        next();
-});
 
 // Routes Configuration
 if(config.hasBlog) {

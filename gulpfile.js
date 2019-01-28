@@ -1,3 +1,4 @@
+const config = require('./config');
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const plumber = require('gulp-plumber');
@@ -7,7 +8,7 @@ const browsersync = require('browser-sync').create();
 
 function browserSync(done) {
     browsersync.init({
-        proxy: "localhost:5000"
+        proxy: "localhost:" + config.sitePort
     });
     done();
 }

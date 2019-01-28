@@ -16,7 +16,10 @@ db.defaults({
             "title": "About Us",
             "content": "<div class=\"container\"><div class=\"row\"><div class=\"col-12\"><h1>About Us</h1></div></div></div>",
             "author": "Administrator",
-            "published": true
+            "published": true,
+            "meta_keywords": "",
+            "meta_description": "",
+            "canonical": ""
         },
         {
             "id": shortid.generate(),
@@ -25,7 +28,10 @@ db.defaults({
             "title": "Services",
             "content": "<div class=\"container\"><div class=\"row\"><div class=\"col-12\"><h1>Services</h1></div></div></div>",
             "author": "Administrator",
-            "published": true
+            "published": true,
+            "meta_keywords": "",
+            "meta_description": "",
+            "canonical": ""
         }
     ],
     blog_posts: [
@@ -38,7 +44,10 @@ db.defaults({
             "author": "Administrator",
             "published": true,
             "created_on": "2019-01-25T17:56:55.472Z",
-            "last_updated": "2019-01-25T17:56:55.472Z"
+            "last_updated": "2019-01-25T17:56:55.472Z",
+            "meta_keywords": "",
+            "meta_description": "",
+            "canonical": ""
         }
     ],
     form_submissions: []

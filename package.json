@@ -9,7 +9,8 @@
     "test": "mocha",
     "start": "pm2 start app.js --name devserver --watch",
     "stop": "pm2 stop all",
-    "build": "gulp && node setup/dbinit.js"
+    "build": "gulp && node setup/dbinit.js",
+    "watch": "gulp watch"
   },
   "keywords": [
     "dental",
