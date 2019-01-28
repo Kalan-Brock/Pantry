@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Create a Page</h1>
+            <form id="create_page" method="post" action="/admin/pages/create">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="My Page">
+                </div>
+                <div class="form-group">
+                    <label for="slug">Page Slug</label>
+                    <input type="text" class="form-control" id="slug" name="slug" aria-describedby="slugHelp" placeholder="my-page">
+                    <small id="slugHelp" class="form-text text-muted">The url structure of the page.  No spaces allowed.</small>
+                </div>
+                <div class="form-group">
+                    <label for="pagecontent">Content</label>
+                    <textarea id="pagecontent" name="pagecontent"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- contentFor('pagescripts') %>
+<script src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=<%= config.tinymceApiKey %>'></script>
+<script>
+    tinymce.init({
+        selector: '#pagecontent',
+        height: 500,
+        menubar: false,
+        plugins: [
+            'advlist autolink lists link image charmap print preview anchor textcolor',
+            'searchreplace visualblocks code fullscreen',
+            'insertdatetime media table contextmenu paste code help wordcount'
+        ],
+        toolbar: 'insert | undo redo |  formatselect | bold italic backcolor  | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help | code',
+    });
+
+    jQuery(document).ready( function($) {
+
+        $('#create_page').submit( function(event) {
+            event.preventDefault();
+            tinymce.triggerSave();
+
+            var selector = $("form#create_page");
+            var formobject = $(selector).serialize();
+
+            $.ajax({
+                type: "POST",
+                url: "/admin/pages/create",
+                data: formobject,
+                success: function(data)
+                {
+                    document.location = "/admin/pages/edit/" + data.id;
+                },
+                error: function(data){
+                    console.log(data);
+                }
+            });
+        });
+    });
+</script>

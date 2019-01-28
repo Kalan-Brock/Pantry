@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Pages</h1>
+            <table class="table">
+                <tr>
+                    <th>Title</th>
+                    <th>Slug</th>
+                    <th>Author</th>
+                    <th>Published</th>
+                    <th>Visit</th>
+                    <th>Edit</th>
+                </tr>
+                <% for(var i=0; i<pages.length; i++) {%>
+                    <tr>
+                        <td><%= pages[i].title %></td>
+                        <td><%= pages[i].slug %></td>
+                        <td><%= pages[i].author %></td>
+                        <td><%= pages[i].published === true ? "Yes" : "No" %></td>
+                        <td><a href="/<%= pages[i].slug %>" target="_blank">visit</a></td>
+                        <td><a href="/admin/pages/edit/<%= pages[i].id %>">edit</a></td>
+                    </tr>
+                <% } %>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p class="text-right admin-page-count"><%= pages.length %> Total Pages</p>
+        </div>
+    </div>
+</div>
+
+<%- contentFor('pagescripts') %>

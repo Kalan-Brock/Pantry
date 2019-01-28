@@ -1,0 +1,43 @@
+{
+  "name": "pantry-cms",
+  "version": "1.0.0",
+  "description": "Pantry web framework, by The Biggest Nerd.  Powered by Node, lowdb and ejs.  Interpreted by Express.",
+  "main": "app.js",
+  "scripts": {
+    "preinstall": "npm install -g pm2",
+    "postinstall": "gulp && node setup/dbinit.js",
+    "test": "mocha",
+    "start": "pm2 start app.js --name devserver --watch",
+    "stop": "pm2 stop all",
+    "build": "gulp && node setup/dbinit.js"
+  },
+  "keywords": [
+    "dental",
+    "marketing",
+    "practice cafe",
+    "the biggest nerd"
+  ],
+  "author": "Kalan Brock",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-ejs-layouts": "^2.5.0",
+    "lowdb": "^1.0.0",
+    "shortid": "^2.2.14"
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.6.3",
+    "bootstrap": "^4.2.1",
+    "browser-sync": "^2.26.3",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-plumber": "^1.2.1",
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.1",
+    "jquery": "^3.3.1"
+  }
+}

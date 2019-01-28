@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= config.siteName %> | <%= pageTitle %></title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<%- include('global/header'); %>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Blog</h1>
+        </div>
+    </div>
+    <% for(var i=0; i<posts.length; i++) {%>
+    <%
+        let dt = new Date(posts[i].created_on);
+        let date_readable = config.monthNames[dt.getMonth()] + " " + dt.getDate() + ", " + dt.getFullYear();
+    %>
+        <div class="row">
+            <div class="col-12">
+                <h2><%= posts[i].title %></h2>
+                <blockquote class="blockquote">
+                    <p class="mb-0 excerpt"><%= posts[i].excerpt %></p>
+                    <footer class="blockquote-footer">written by <cite title="Post Author"><%= posts[i].author %></cite> on <%= date_readable %></footer>
+                </blockquote>
+            </div>
+        </div>
+    <% } %>
+</div>
+<%- include('global/footer'); %>
+<script src="/js/main.js"></script>
+</body>
+</html>
