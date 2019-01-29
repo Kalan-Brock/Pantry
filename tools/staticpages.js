@@ -5,6 +5,7 @@ const adapter = new FileSync('db.json');
 const db = low(adapter);
 const fs = require('fs-extra');
 const ejs = require("ejs");
+const ampify = require('ampify');
 
 // The homepage.
 let html = ejs.renderFile('./views/home.ejs',
@@ -22,6 +23,8 @@ let html = ejs.renderFile('./views/home.ejs',
             if(err)
                 console.log(err);
         });
+
+        fs.outputFile("./public/amp/index.html", ampify(str, {cwd: 'public'}));
     });
 
 
@@ -31,6 +34,7 @@ let pages = db.get('pages').value();
 for(let i=0; i<pages.length; i++) {
     let slug = pages[i].slug;
     let path = "./public/optimized/" + slug + ".html";
+    let amppath = "./public/amp/" + slug + ".html";
 
     let html = ejs.renderFile('./views/' + pages[i].layout + '.ejs',
         {
@@ -48,6 +52,8 @@ for(let i=0; i<pages.length; i++) {
                 if(err)
                     console.log(err);
             });
+
+            fs.outputFile(amppath, ampify(str, {cwd: 'public'}));
         });
 }
 
@@ -71,10 +77,12 @@ if(config.hasBlog) {
             async: false
         },
         function (err, str) {
-            fs.outputFile("./public/optimized/blog.html", str, function (err) {
+            fs.outputFile("./public/optimized/blog/index.html", str, function (err) {
                 if (err)
                     console.log(err);
             });
+
+            fs.outputFile("./public/amp/blog/index.html", ampify(str, {cwd: 'public'}));
         });
 
     // Blog posts from database.
@@ -83,6 +91,7 @@ if(config.hasBlog) {
         if(posts[i].should_cache) {
             let slug = posts[i].slug;
             let path = "./public/optimized/blog/" + slug + ".html";
+            let amppath = "./public/amp/blog/" + slug + ".html";
 
             let html = ejs.renderFile('./views/post.ejs',
                 {
@@ -99,6 +108,8 @@ if(config.hasBlog) {
                         if (err)
                             console.log(err);
                     });
+
+                    fs.outputFile(amppath, ampify(str, {cwd: 'public'}));
                 });
         }
     }

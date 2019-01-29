@@ -57,6 +57,7 @@ router.post('/pages/create', (req, res) => {
             return res.json(data);
 
         let path = "./public/optimized/" + page.slug + ".html";
+        let amppath = "./public/amp/" + page.slug + ".html";
 
         let optimizedhtml = ejs.renderFile('./views/' + page.layout + '.ejs',
             {
@@ -74,6 +75,8 @@ router.post('/pages/create', (req, res) => {
                     if(err)
                         console.log(err);
                 });
+
+                fs.outputFile(amppath, ampify(str, {cwd: 'public'}));
             });
     }
 
@@ -124,6 +127,7 @@ router.post('/pages/edit/:id', (req, res) => {
             .write();
 
         let path = "./public/optimized/" + req.body.slug + ".html";
+        let amppath = "./public/amp/" + req.body.slug + ".html";
         let page = db.get('pages').find({id: theid}).value();
 
         if(page === 'undefined' || !page.should_cache)
@@ -145,6 +149,8 @@ router.post('/pages/edit/:id', (req, res) => {
                     if(err)
                         console.log(err);
                 });
+
+                fs.outputFile(amppath, ampify(str, {cwd: 'public'}));
             });
     }
 

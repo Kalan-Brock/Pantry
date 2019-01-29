@@ -1,36 +1,38 @@
 const config = require('./config');
 const express = require('express');
-const compression = require('compression');
 const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 const bodyParser = require("body-parser");
 const app = express();
 
 // Gzip compression
-app.use(compression());
+//app.use(compression());
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
 
-// Remove trailing slash if it exists, for SEO purposes.  Serve static html files without file extension only.
+// Serve static html files without file extension only.
 app.use((req, res, next) => {
-    if (req.originalUrl.substr(-1) === '/' && req.originalUrl.length > 1)
-        res.redirect(301, req.originalUrl.slice(0, -1));
-    else if (req.originalUrl.endsWith('.html'))
+    if (req.originalUrl.endsWith('.html'))
         res.redirect(301, req.originalUrl.slice(0, -5));
     else if (req.originalUrl.substr(-5) === 'index')
-        res.redirect(301, req.originalUrl.slice(0, -5));
+        res.redirect(301, req.originalUrl.slice(0, -6));
     else
         next();
 });
 
-app.use('/', express.static(__dirname + '/public/optimized', {
+app.use('/amp', express.static(path.join(__dirname, '/public/amp'), {
     redirect: false,
     extensions: ['html']
 }));
 
-app.use('/', express.static(__dirname + '/public', {
+app.use('/', express.static(path.join(__dirname, '/public/optimized'), {
+    redirect: false,
+    extensions: ['html']
+}));
+
+app.use('/', express.static(path.join(__dirname, '/public'), {
     redirect: false,
     extensions: ['html']
 }));
