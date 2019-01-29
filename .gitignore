@@ -5,3 +5,4 @@ node_modules/
 db.json
 public/optimized/
 public/amp/
+public/sitemap.xml

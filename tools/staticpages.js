@@ -38,7 +38,7 @@ for(let i=0; i<pages.length; i++) {
     let slug = pages[i].slug;
     let path = "./public/optimized/" + slug + ".html";
     let amppath = "./public/amp/" + slug + ".html";
-    sitemap.add({url: '/' + slug, changefreq: 'weekly',  priority: 0.5});
+    sitemap.add({url: '/' + slug, changefreq: 'weekly',  priority: 0.7});
 
 
     if(pages[i].should_cache) {
@@ -78,11 +78,6 @@ for(let i=0; i<pages.length; i++) {
     }
 }
 
-fs.outputFile("./public/sitemap.xml", sitemap.toXML(), function (err) {
-    if (err)
-        console.log(err);
-});
-
 if(config.hasBlog) {
 // Blog Main Blog Page
     let posts = db.get('blog_posts').value();
@@ -116,6 +111,7 @@ if(config.hasBlog) {
             let slug = posts[i].slug;
             let path = "./public/optimized/blog/" + slug + ".html";
             let amppath = "./public/amp/blog/" + slug + ".html";
+            sitemap.add({url: '/blog/' + slug, changefreq: 'weekly',  priority: 0.5});
 
             let html = ejs.renderFile('./views/post.ejs',
                 {
@@ -152,3 +148,8 @@ if(config.hasBlog) {
         }
     }
 }
+
+fs.outputFile("./public/sitemap.xml", sitemap.toXML(), function (err) {
+    if (err)
+        console.log(err);
+});
