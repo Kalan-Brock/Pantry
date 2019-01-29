@@ -1,9 +1,13 @@
 const config = require('./config');
 const express = require('express');
+const compression = require('compression');
 const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 const bodyParser = require("body-parser");
 const app = express();
+
+// Gzip compression
+app.use(compression());
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

@@ -32,7 +32,7 @@ for(let i=0; i<pages.length; i++) {
     let slug = pages[i].slug;
     let path = "./public/optimized/" + slug + ".html";
 
-    let html = ejs.renderFile('./views/page.ejs',
+    let html = ejs.renderFile('./views/' + pages[i].layout + '.ejs',
         {
             layout: false,
             config: config,

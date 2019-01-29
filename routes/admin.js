@@ -43,9 +43,38 @@ router.post('/pages/create', (req, res) => {
                 "title": req.body.title,
                 "content": req.body.pagecontent,
                 "author": "Administrator",
-                "published": true
+                "published": true,
+                "should_cache": true,
+                "meta_keywords": "",
+                "meta_description": "",
+                "canonical": ""
             }
         ).write();
+
+        let page = db.get('pages').find({id: data.id}).value();
+
+        if(page === 'undefined' || !page.should_cache)
+            return res.json(data);
+
+        let path = "./public/optimized/" + page.slug + ".html";
+
+        let optimizedhtml = ejs.renderFile('./views/' + page.layout + '.ejs',
+            {
+                layout: false,
+                config: config,
+                page: page
+            },
+            {
+                rmWhitespace: true,
+                async: false
+            },
+            function(err, str)
+            {
+                fs.outputFile(path, str, function(err) {
+                    if(err)
+                        console.log(err);
+                });
+            });
     }
 
     res.json(data);
@@ -86,7 +115,11 @@ router.post('/pages/edit/:id', (req, res) => {
                 "title": req.body.title,
                 "content": req.body.pagecontent,
                 "author": "Administrator",
-                "published": true
+                "published": true,
+                "should_cache": true,
+                "meta_keywords": "",
+                "meta_description": "",
+                "canonical": ""
             })
             .write();
 
@@ -96,7 +129,7 @@ router.post('/pages/edit/:id', (req, res) => {
         if(page === 'undefined' || !page.should_cache)
             return res.json(data);
 
-        let optimizedhtml = ejs.renderFile('./views/page.ejs',
+        let optimizedhtml = ejs.renderFile('./views/' + page.layout + '.ejs',
             {
                 layout: false,
                 config: config,
