@@ -1,6 +1,8 @@
 # Pantry CMS
 
-The front end developer CMS.
+Pantry is a CMS made for Front End Developers. It's written entirely with Javascript and is powered by a single, flat-file database. Pantry's speed comes from being able to generate static, optimized files to serve on the fly. When you create or update posts and pages, these cache resources are handled for you. This with the benefit of built-in compression help make one fast website.
+
+We are still in early development, so check back!
 
 #### The Tech
 
