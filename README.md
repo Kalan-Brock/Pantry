@@ -2,24 +2,40 @@
 
 A lightweight CMS created for front-end developers. Powered by node, lowdb, and express.
 
+#### The Tech
+
+- Node.js (built with v.10.15.0)
+- NPM (built with v.6.7.0)
+- Lowdb
+- PM2
+- Express
+- Gulp (built with v.4.0.0)
+- EJS
+
 ## Installation
 
-1.  Clone repository.
-2.  Run 'npm install'.
-3.  Run 'npm start'.
+npm install
 
-It's now available at http://localhost:5000
+## To Start
+npm start
 
-## Development
+## To Dev
+gulp watch
 
-Run 'gulp watch'.  Browsersync will open automatically.
+## View Your Project
 
-Site available at http://localhost:3000.
-Browsersync available at http://localhost:3001.
+---
+**Project URL**:  http://localhost:5000
 
-## Stop Express (via pm2)
+**Browser Sync Browser**:  http://localhost:3000
 
-Run 'npm stop'.
+**Browser Sync UI**:  http://localhost:3001
+
+---
+
+## To Stop
+
+npm stop
 
 #TO DO
 
