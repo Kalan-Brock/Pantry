@@ -5,11 +5,11 @@
   "main": "app.js",
   "scripts": {
     "preinstall": "npm install -g pm2",
-    "postinstall": "gulp && node setup/dbinit.js",
+    "postinstall": "node setup/dbinit.js && gulp",
     "test": "mocha",
     "start": "pm2 start app.js --name devserver --watch",
     "stop": "pm2 stop all",
-    "build": "gulp && node setup/dbinit.js",
+    "build": "node setup/dbinit.js && gulp",
     "watch": "gulp watch"
   },
   "keywords": [
