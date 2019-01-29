@@ -3,4 +3,5 @@
 package-lock.json
 node_modules/
 db.json
-public/optimized
+public/optimized/
+public/amp/
