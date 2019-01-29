@@ -18,14 +18,14 @@ let html = ejs.renderFile('./views/home.ejs',
     },
     function(err, str)
     {
-        fs.writeFile("./public/optimized/index.html", str, function(err) {
+        fs.outputFile("./public/optimized/index.html", str, function(err) {
             if(err)
                 console.log(err);
         });
     });
 
 
-// Do each page in the database.
+// Each page in the database, if flagged as "should_cache".
 let pages = db.get('pages').value();
 
 for(let i=0; i<pages.length; i++) {
@@ -44,35 +44,36 @@ for(let i=0; i<pages.length; i++) {
         },
         function(err, str)
         {
-            fs.writeFile(path, str, function(err) {
+            fs.outputFile(path, str, function(err) {
                 if(err)
                     console.log(err);
             });
         });
 }
 
+if(config.hasBlog) {
 // Blog Main Blog Page
-let posts = db.get('blog_posts').value();
+    let posts = db.get('blog_posts').value();
 
-if(posts === undefined) {
-    posts = {};
-}
+    if (posts === undefined) {
+        posts = {};
+    }
 
-let bloghtml = ejs.renderFile('./views/blog.ejs',
-    {
-        layout: false,
-        config: config,
-        pageTitle: "Blog",
-        posts: posts
-    },
-    {
-        rmWhitespace: true,
-        async: false
-    },
-    function(err, str)
-    {
-        fs.outputFile("./public/optimized/blog.html", str, function(err) {
-            if(err)
-                console.log(err);
+    let bloghtml = ejs.renderFile('./views/blog.ejs',
+        {
+            layout: false,
+            config: config,
+            pageTitle: "Blog",
+            posts: posts
+        },
+        {
+            rmWhitespace: true,
+            async: false
+        },
+        function (err, str) {
+            fs.outputFile("./public/optimized/blog.html", str, function (err) {
+                if (err)
+                    console.log(err);
+            });
         });
-    });
+}
