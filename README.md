@@ -1,7 +1,5 @@
 # Pantry CMS
 
-A lightweight CMS created for front-end developers. Powered by node, lowdb, and express.
-
 #### The Tech
 
 - Node.js (built with v.10.15.0)
@@ -36,6 +34,10 @@ gulp watch
 ## To Stop
 
 npm stop
+
+## Configurations
+
+Some basic site-wide configs can be found in config.js.  To be honest, I haven't done much with them yet.
 
 #TO DO
 

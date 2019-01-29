@@ -1,7 +1,7 @@
 {
   "name": "pantry-cms",
   "version": "1.0.0",
-  "description": "Pantry web framework, by The Biggest Nerd.  Powered by Node, lowdb and ejs.  Interpreted by Express.",
+  "description": "The front end developer CMS.",
   "main": "app.js",
   "scripts": {
     "preinstall": "npm install -g pm2",
@@ -16,7 +16,9 @@
     "dental",
     "marketing",
     "practice cafe",
-    "the biggest nerd"
+    "the biggest nerd",
+    "cms",
+    "front end"
   ],
   "author": "Kalan Brock",
   "license": "MIT",
