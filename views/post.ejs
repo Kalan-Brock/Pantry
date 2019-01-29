@@ -10,6 +10,13 @@
 <body class="post post-<%= post.slug %>">
 <%- include('global/header'); %>
 <%- post.content %>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <pre><code>shown from: views/post.ejs</code></pre>
+        </div>
+    </div>
+</div>
 <%- include('global/footer'); %>
 <script src="/js/main.js"></script>
 </body>

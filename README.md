@@ -10,7 +10,7 @@ The front end developer CMS.
 - PM2
 - Express
 - Gulp (built with v.4.0.0)
-- EJS
+- EJS and EJS Layouts
 
 ## Installation
 

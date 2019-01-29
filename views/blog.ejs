@@ -22,14 +22,22 @@
     %>
         <div class="row">
             <div class="col-12">
-                <h2><%= posts[i].title %></h2>
+                <h2><a href="/blog/<%= posts[i].slug %>"><%= posts[i].title %></a></h2>
                 <blockquote class="blockquote">
-                    <p class="mb-0 excerpt"><%= posts[i].excerpt %></p>
                     <footer class="blockquote-footer">written by <cite title="Post Author"><%= posts[i].author %></cite> on <%= date_readable %></footer>
                 </blockquote>
+                <p class="mb-0 excerpt"><%= posts[i].excerpt %></p>
+                <a class="btn btn-primary" href="/blog/<%= posts[i].slug %>">Read More</a>
             </div>
         </div>
     <% } %>
+</div>
+<div class="container code-box">
+    <div class="row">
+        <div class="col-12">
+            <pre><code>shown from: views/blog.ejs</code></pre>
+        </div>
+    </div>
 </div>
 <%- include('global/footer'); %>
 <script src="/js/main.js"></script>
