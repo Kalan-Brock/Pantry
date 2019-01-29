@@ -77,10 +77,23 @@ router.post('/pages/create', (req, res) => {
                     if (err)
                         console.log(err);
                 });
-
-                if(page.should_amp)
-                    fs.outputFile(amppath, ampify(str, {cwd: '../public'}));
             });
+
+        if(page.should_amp) {
+            let amphtml = ejs.renderFile('./views/amppage.ejs',
+                {
+                    layout: false,
+                    config: config,
+                    page: pages[i]
+                },
+                {
+                    rmWhitespace: true,
+                    async: false
+                },
+                function (err, str) {
+                    fs.outputFile(amppath, ampify(str, {cwd: '../public'}));
+                });
+        }
     }
 
     res.json(data);
@@ -156,9 +169,23 @@ router.post('/pages/edit/:id', (req, res) => {
                     if(err)
                         console.log(err);
                 });
-
-                fs.outputFile(amppath, ampify(str, {cwd: '../public'}));
             });
+
+        if(page.should_amp) {
+            let amphtml = ejs.renderFile('./views/amppage.ejs',
+                {
+                    layout: false,
+                    config: config,
+                    page: pages[i]
+                },
+                {
+                    rmWhitespace: true,
+                    async: false
+                },
+                function (err, str) {
+                    fs.outputFile(amppath, ampify(str, {cwd: '../public'}));
+                });
+        }
     }
 
     res.json(data);

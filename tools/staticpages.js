@@ -53,10 +53,23 @@ for(let i=0; i<pages.length; i++) {
                     if (err)
                         console.log(err);
                 });
-
-                if(pages[i].should_amp)
-                    fs.outputFile(amppath, ampify(str, {cwd: 'public'}));
             });
+
+        if(pages[i].should_amp) {
+            let amphtml = ejs.renderFile('./views/amppage.ejs',
+                {
+                    layout: false,
+                    config: config,
+                    page: pages[i]
+                },
+                {
+                    rmWhitespace: true,
+                    async: false
+                },
+                function (err, str) {
+                    fs.outputFile(amppath, ampify(str, {cwd: 'public'}));
+                });
+        }
     }
 }
 
