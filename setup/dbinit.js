@@ -33,6 +33,7 @@ db.defaults({
             "content": "<div class=\"container\"><div class=\"row\"><div class=\"col-12\"><h1>Example Post</h1><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi dicta dignissimos est eum ex explicabo, harum, hic inventore maiores, minima minus nisi numquam obcaecati odio pariatur repudiandae veniam voluptas voluptate.</p></div></div></div>",
             "author": "Administrator",
             "published": true,
+            "should_cache": true,
             "created_on": thedate,
             "last_updated": thedate,
             "meta_keywords": "",
