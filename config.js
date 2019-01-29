@@ -1,4 +1,5 @@
 const config = {
+    siteUrl: "http://localhost:5000",
     sitePort: 5000,
     siteName: "Pantry",
     siteTitle: "The Front End Developer CMS",

@@ -6,6 +6,7 @@ const db = low(adapter);
 const fs = require('fs-extra');
 const ejs = require("ejs");
 const ampify = require('ampify');
+const sm = require('sitemap');
 
 // The homepage.
 let html = ejs.renderFile('./views/home.ejs',
@@ -28,11 +29,17 @@ let html = ejs.renderFile('./views/home.ejs',
 
 // Each page in the database, if flagged as "should_cache".
 let pages = db.get('pages').value();
+let sitemap = sm.createSitemap ({
+    hostname: config.siteUrl,
+    cacheTime: 600000
+});
 
 for(let i=0; i<pages.length; i++) {
     let slug = pages[i].slug;
     let path = "./public/optimized/" + slug + ".html";
     let amppath = "./public/amp/" + slug + ".html";
+    sitemap.add({url: '/' + slug, changefreq: 'weekly',  priority: 0.5});
+
 
     if(pages[i].should_cache) {
 
@@ -70,6 +77,11 @@ for(let i=0; i<pages.length; i++) {
         }
     }
 }
+
+fs.outputFile("./public/sitemap.xml", sitemap.toXML(), function (err) {
+    if (err)
+        console.log(err);
+});
 
 if(config.hasBlog) {
 // Blog Main Blog Page
