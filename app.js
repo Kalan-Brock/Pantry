@@ -4,9 +4,10 @@ const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 const bodyParser = require("body-parser");
 const app = express();
+const compression = require('compression');
 
 // Gzip compression
-//app.use(compression());
+app.use(compression());
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
