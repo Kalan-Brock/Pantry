@@ -6,10 +6,17 @@ const autoprefixer = require('gulp-autoprefixer');
 const concat = require('gulp-concat');
 const browsersync = require('browser-sync').create();
 const exec = require('child_process').exec;
+const ngrok = require('ngrok');
 
 function browserSync(done) {
     browsersync.init({
         proxy: "localhost:" + config.sitePort
+    }, function(err, bs) {
+        (async function() {
+            const url = await ngrok.connect(3000);
+        })();
+
+        process.stdout.write("ngrok: http://localhost:4040" + "\r");
     });
     done();
 }
