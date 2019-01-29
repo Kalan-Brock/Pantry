@@ -1,5 +1,7 @@
 # Pantry CMS
 
+The front end developer CMS.
+
 #### The Tech
 
 - Node.js (built with v.10.15.0)
@@ -15,9 +17,11 @@
 npm install
 
 ## To Start
+
 npm start
 
 ## To Dev
+
 gulp watch
 
 ## View Your Project
