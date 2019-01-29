@@ -36,25 +36,28 @@ for(let i=0; i<pages.length; i++) {
     let path = "./public/optimized/" + slug + ".html";
     let amppath = "./public/amp/" + slug + ".html";
 
-    let html = ejs.renderFile('./views/' + pages[i].layout + '.ejs',
-        {
-            layout: false,
-            config: config,
-            page: pages[i]
-        },
-        {
-            rmWhitespace: true,
-            async: false
-        },
-        function(err, str)
-        {
-            fs.outputFile(path, str, function(err) {
-                if(err)
-                    console.log(err);
-            });
+    if(pages[i].should_cache) {
 
-            fs.outputFile(amppath, ampify(str, {cwd: 'public'}));
-        });
+        let html = ejs.renderFile('./views/' + pages[i].layout + '.ejs',
+            {
+                layout: false,
+                config: config,
+                page: pages[i]
+            },
+            {
+                rmWhitespace: true,
+                async: false
+            },
+            function (err, str) {
+                fs.outputFile(path, str, function (err) {
+                    if (err)
+                        console.log(err);
+                });
+
+                if(pages[i].should_amp)
+                    fs.outputFile(amppath, ampify(str, {cwd: 'public'}));
+            });
+    }
 }
 
 if(config.hasBlog) {
@@ -109,7 +112,8 @@ if(config.hasBlog) {
                             console.log(err);
                     });
 
-                    fs.outputFile(amppath, ampify(str, {cwd: 'public'}));
+                    if(posts[i].should_amp)
+                        fs.outputFile(amppath, ampify(str, {cwd: 'public'}));
                 });
         }
     }

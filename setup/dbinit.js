@@ -19,6 +19,7 @@ db.defaults({
             "author": "Administrator",
             "published": true,
             "should_cache": true,
+            "should_amp": true,
             "meta_keywords": "example, page",
             "meta_description": "Pantry CMS example page.",
             "canonical": ""
@@ -34,6 +35,7 @@ db.defaults({
             "author": "Administrator",
             "published": true,
             "should_cache": true,
+            "should_amp": true,
             "created_on": thedate,
             "last_updated": thedate,
             "meta_keywords": "",

@@ -7,7 +7,8 @@ const adapter = new FileSync('db.json');
 const db = low(adapter);
 const shortid = require('shortid');
 const fs = require('fs-extra');
-const ejs = require("ejs");
+const ejs = require('ejs');
+const ampify = require('ampify');
 
 // Pages Routes
 router.get('/pages/create', (req, res) => {
@@ -45,6 +46,7 @@ router.post('/pages/create', (req, res) => {
                 "author": "Administrator",
                 "published": true,
                 "should_cache": true,
+                "should_amp": true,
                 "meta_keywords": "",
                 "meta_description": "",
                 "canonical": ""
@@ -54,10 +56,11 @@ router.post('/pages/create', (req, res) => {
         let page = db.get('pages').find({id: data.id}).value();
 
         if(page === 'undefined' || !page.should_cache)
-            return res.json(data);
+            res.json(data);
 
         let path = "./public/optimized/" + page.slug + ".html";
         let amppath = "./public/amp/" + page.slug + ".html";
+
 
         let optimizedhtml = ejs.renderFile('./views/' + page.layout + '.ejs',
             {
@@ -69,14 +72,14 @@ router.post('/pages/create', (req, res) => {
                 rmWhitespace: true,
                 async: false
             },
-            function(err, str)
-            {
-                fs.outputFile(path, str, function(err) {
-                    if(err)
+            function (err, str) {
+                fs.outputFile(path, str, function (err) {
+                    if (err)
                         console.log(err);
                 });
 
-                fs.outputFile(amppath, ampify(str, {cwd: 'public'}));
+                if(page.should_amp)
+                    fs.outputFile(amppath, ampify(str, {cwd: 'public'}));
             });
     }
 
@@ -120,6 +123,7 @@ router.post('/pages/edit/:id', (req, res) => {
                 "author": "Administrator",
                 "published": true,
                 "should_cache": true,
+                "should_amp": true,
                 "meta_keywords": "",
                 "meta_description": "",
                 "canonical": ""
@@ -131,7 +135,7 @@ router.post('/pages/edit/:id', (req, res) => {
         let page = db.get('pages').find({id: theid}).value();
 
         if(page === 'undefined' || !page.should_cache)
-            return res.json(data);
+            res.json(data);
 
         let optimizedhtml = ejs.renderFile('./views/' + page.layout + '.ejs',
             {
@@ -154,7 +158,7 @@ router.post('/pages/edit/:id', (req, res) => {
             });
     }
 
-    return res.json(data);
+    res.json(data);
 });
 
 router.get('/pages', (req, res) => {
