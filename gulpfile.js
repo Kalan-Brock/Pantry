@@ -44,7 +44,7 @@ function scripts() {
 }
 
 function staticfiles(done) {
-    exec('node ./tools/staticpages.js');
+    exec('node ./tools/staticpages.js', {shell: false});
     done();
 }
 

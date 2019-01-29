@@ -7,7 +7,7 @@
     "preinstall": "npm install -g pm2",
     "postinstall": "node setup/dbinit.js && gulp",
     "test": "mocha",
-    "start": "pm2 start app.js --name devserver --watch",
+    "start": "pm2 start app.js --watch",
     "stop": "pm2 stop all",
     "build": "node setup/dbinit.js && gulp",
     "watch": "gulp watch"
