@@ -42,7 +42,7 @@ router.post('/pages/create', (req, res) => {
                 "slug": req.body.slug,
                 "layout": "page",
                 "title": req.body.title,
-                "content": req.body.pagecontent,
+                "content": req.body.content,
                 "author": "Administrator",
                 "published": true,
                 "should_cache": true,
@@ -79,7 +79,7 @@ router.post('/pages/create', (req, res) => {
                 });
 
                 if(page.should_amp)
-                    fs.outputFile(amppath, ampify(str, {cwd: 'public'}));
+                    fs.outputFile(amppath, ampify(str, {cwd: '../public'}));
             });
     }
 
@@ -103,6 +103,9 @@ router.get('/pages/edit/:id', (req, res, next) => {
 });
 
 router.post('/pages/edit/:id', (req, res) => {
+    res.setHeader('Content-Type', 'text/event-stream');
+    res.setHeader('Cache-Control', 'no-cache');
+
     let theid = req.params.id;
     let data = {success: true, id: theid};
     let thepage = db.get('pages').find({id: theid}).value();
@@ -119,7 +122,7 @@ router.post('/pages/edit/:id', (req, res) => {
                 "slug": req.body.slug,
                 "layout": "page",
                 "title": req.body.title,
-                "content": req.body.pagecontent,
+                "content": req.body.content,
                 "author": "Administrator",
                 "published": true,
                 "should_cache": true,
@@ -154,7 +157,7 @@ router.post('/pages/edit/:id', (req, res) => {
                         console.log(err);
                 });
 
-                fs.outputFile(amppath, ampify(str, {cwd: 'public'}));
+                fs.outputFile(amppath, ampify(str, {cwd: '../public'}));
             });
     }
 

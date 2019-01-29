@@ -6,8 +6,8 @@ const bodyParser = require("body-parser");
 const app = express();
 const compression = require('compression');
 
-// Gzip compression
-app.use(compression());
+// Gzip compression - Currently breaking ajax forms.
+//app.use(compression());
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
