@@ -7,7 +7,7 @@
     <title><%= config.siteName %> | <%= post.title %></title>
     <link rel="stylesheet" href="/css/styles.css">
 </head>
-<body class="page page-<%= post.slug %>">
+<body class="post post-<%= post.slug %>">
 <%- include('global/header'); %>
 <%- post.content %>
 <%- include('global/footer'); %>
