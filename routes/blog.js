@@ -22,6 +22,21 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/:post', (req, res, next) => {
+    let name = req.params.post;
+    let thepost = db.get('blog_posts').find({slug: name}).value();
+
+    if(thepost === undefined) {
+        return next();
+    }
+
+    res.render('post', {
+        layout: false,
+        config: config,
+        post: thepost
+    });
+});
+
 // 404 - Keep as last route.
 router.get('*', function(req, res){
     res.status(404).render('404', {

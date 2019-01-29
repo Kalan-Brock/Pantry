@@ -76,4 +76,30 @@ if(config.hasBlog) {
                     console.log(err);
             });
         });
+
+    // Blog posts from database.
+
+    for(let i=0; i<posts.length; i++) {
+        if(posts[i].should_cache) {
+            let slug = posts[i].slug;
+            let path = "./public/optimized/blog/" + slug + ".html";
+
+            let html = ejs.renderFile('./views/post.ejs',
+                {
+                    layout: false,
+                    config: config,
+                    post: posts[i]
+                },
+                {
+                    rmWhitespace: true,
+                    async: false
+                },
+                function (err, str) {
+                    fs.outputFile(path, str, function (err) {
+                        if (err)
+                            console.log(err);
+                    });
+                });
+        }
+    }
 }
