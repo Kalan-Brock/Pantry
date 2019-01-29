@@ -8,6 +8,11 @@ const ejs = require("ejs");
 const ampify = require('ampify');
 const sm = require('sitemap');
 
+let sitemap = sm.createSitemap ({
+    hostname: config.siteUrl,
+    cacheTime: 600000
+});
+
 // The homepage.
 let html = ejs.renderFile('./views/home.ejs',
     {
@@ -26,13 +31,11 @@ let html = ejs.renderFile('./views/home.ejs',
         });
     });
 
+sitemap.add({url: '/', changefreq: 'weekly',  priority: 0.9});
+
 
 // Each page in the database, if flagged as "should_cache".
 let pages = db.get('pages').value();
-let sitemap = sm.createSitemap ({
-    hostname: config.siteUrl,
-    cacheTime: 600000
-});
 
 for(let i=0; i<pages.length; i++) {
     let slug = pages[i].slug;
@@ -104,7 +107,7 @@ if(config.hasBlog) {
             });
         });
 
-    // Blog posts from database.
+    sitemap.add({url: '/blog/', changefreq: 'weekly',  priority: 0.8});
 
     for(let i=0; i<posts.length; i++) {
         if(posts[i].should_cache) {
