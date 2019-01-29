@@ -6,6 +6,8 @@ const FileSync = require('lowdb/adapters/FileSync');
 const adapter = new FileSync('db.json');
 const db = low(adapter);
 const shortid = require('shortid');
+const fs = require('fs-extra');
+const ejs = require("ejs");
 
 // Pages Routes
 router.get('/pages/create', (req, res) => {
@@ -87,6 +89,30 @@ router.post('/pages/edit/:id', (req, res) => {
                 "published": true
             })
             .write();
+
+        let path = "./public/optimized/" + req.body.slug + ".html";
+        let page = db.get('pages').find({id: theid}).value();
+
+        if(page === 'undefined' || !page.should_cache)
+            return res.json(data);
+
+        let optimizedhtml = ejs.renderFile('./views/page.ejs',
+            {
+                layout: false,
+                config: config,
+                page: page
+            },
+            {
+                rmWhitespace: true,
+                async: false
+            },
+            function(err, str)
+            {
+                fs.outputFile(path, str, function(err) {
+                    if(err)
+                        console.log(err);
+                });
+            });
     }
 
     return res.json(data);

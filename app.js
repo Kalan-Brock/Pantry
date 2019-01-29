@@ -21,6 +21,11 @@ app.use((req, res, next) => {
         next();
 });
 
+app.use('/', express.static(__dirname + '/public/optimized', {
+    redirect: false,
+    extensions: ['html']
+}));
+
 app.use('/', express.static(__dirname + '/public', {
     redirect: false,
     extensions: ['html']

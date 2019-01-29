@@ -18,7 +18,7 @@ let html = ejs.renderFile('./views/home.ejs',
     },
     function(err, str)
     {
-        fs.writeFile("./public/index.html", str, function(err) {
+        fs.writeFile("./public/optimized/index.html", str, function(err) {
             if(err)
                 console.log(err);
         });
@@ -30,7 +30,7 @@ let pages = db.get('pages').value();
 
 for(let i=0; i<pages.length; i++) {
     let slug = pages[i].slug;
-    let path = "./public/" + slug + ".html";
+    let path = "./public/optimized/" + slug + ".html";
 
     let html = ejs.renderFile('./views/page.ejs',
         {
@@ -71,7 +71,7 @@ let bloghtml = ejs.renderFile('./views/blog.ejs',
     },
     function(err, str)
     {
-        fs.outputFile("./public/blog/index.html", str, function(err) {
+        fs.outputFile("./public/optimized/blog.html", str, function(err) {
             if(err)
                 console.log(err);
         });
