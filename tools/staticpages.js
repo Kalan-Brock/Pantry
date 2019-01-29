@@ -23,8 +23,6 @@ let html = ejs.renderFile('./views/home.ejs',
             if(err)
                 console.log(err);
         });
-
-        fs.outputFile("./public/amp/index.html", ampify(str, {cwd: 'public'}));
     });
 
 
@@ -97,8 +95,6 @@ if(config.hasBlog) {
                 if (err)
                     console.log(err);
             });
-
-            fs.outputFile("./public/amp/blog/index.html", ampify(str, {cwd: 'public'}));
         });
 
     // Blog posts from database.
@@ -124,10 +120,23 @@ if(config.hasBlog) {
                         if (err)
                             console.log(err);
                     });
-
-                    if(posts[i].should_amp)
-                        fs.outputFile(amppath, ampify(str, {cwd: 'public'}));
                 });
+
+            if(posts[i].should_amp) {
+                let amphtml = ejs.renderFile('./views/amppost.ejs',
+                    {
+                        layout: false,
+                        config: config,
+                        post: posts[i]
+                    },
+                    {
+                        rmWhitespace: true,
+                        async: false
+                    },
+                    function (err, str) {
+                        fs.outputFile(amppath, ampify(str, {cwd: 'public'}));
+                    });
+            }
         }
     }
 }
