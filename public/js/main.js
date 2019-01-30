@@ -24,6 +24,9 @@ jQuery(document).ready( function($) {
         case '/blog':
             activenav = 'blog';
             break;
+        default:
+            activenav = 'blog';
+            break;
     }
 
     $('li.nav-item.' + activenav).addClass('active');
