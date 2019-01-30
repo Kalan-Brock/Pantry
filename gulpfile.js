@@ -51,7 +51,9 @@ function scripts() {
 }
 
 function staticfiles(done) {
-    exec('node ./tools/staticpages.js', {shell: false});
+    if(config.generateStaticFiles) {
+        exec('node ./tools/staticpages.js', {shell: false});
+    }
     done();
 }
 

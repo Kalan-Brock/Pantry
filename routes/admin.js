@@ -61,25 +61,26 @@ router.post('/pages/create', (req, res) => {
         let path = "./public/optimized/" + page.slug + ".html";
         let amppath = "./public/amp/" + page.slug + ".html";
 
-
-        let optimizedhtml = ejs.renderFile('./views/' + page.layout + '.ejs',
-            {
-                layout: false,
-                config: config,
-                page: page
-            },
-            {
-                rmWhitespace: true,
-                async: false
-            },
-            function (err, str) {
-                fs.outputFile(path, str, function (err) {
-                    if (err)
-                        console.log(err);
+        if(config.generateStaticFiles) {
+            let optimizedhtml = ejs.renderFile('./views/' + page.layout + '.ejs',
+                {
+                    layout: false,
+                    config: config,
+                    page: page
+                },
+                {
+                    rmWhitespace: true,
+                    async: false
+                },
+                function (err, str) {
+                    fs.outputFile(path, str, function (err) {
+                        if (err)
+                            console.log(err);
+                    });
                 });
-            });
+        }
 
-        if(page.should_amp) {
+        if(config.generateAMP && page.should_amp) {
             let amphtml = ejs.renderFile('./views/amppage.ejs',
                 {
                     layout: false,
@@ -130,7 +131,7 @@ router.post('/pages/edit/:id', (req, res) => {
 
     if(data.success) {
         db.get('pages')
-            .find({ id: theid })
+            .find({id: theid})
             .assign({
                 "slug": req.body.slug,
                 "layout": "page",
@@ -150,28 +151,29 @@ router.post('/pages/edit/:id', (req, res) => {
         let amppath = "./public/amp/" + req.body.slug + ".html";
         let page = db.get('pages').find({id: theid}).value();
 
-        if(page === 'undefined' || !page.should_cache)
+        if (page === 'undefined' || !page.should_cache)
             res.json(data);
 
-        let optimizedhtml = ejs.renderFile('./views/' + page.layout + '.ejs',
-            {
-                layout: false,
-                config: config,
-                page: page
-            },
-            {
-                rmWhitespace: true,
-                async: false
-            },
-            function(err, str)
-            {
-                fs.outputFile(path, str, function(err) {
-                    if(err)
-                        console.log(err);
+        if (config.generateStaticFiles) {
+            let optimizedhtml = ejs.renderFile('./views/' + page.layout + '.ejs',
+                {
+                    layout: false,
+                    config: config,
+                    page: page
+                },
+                {
+                    rmWhitespace: true,
+                    async: false
+                },
+                function (err, str) {
+                    fs.outputFile(path, str, function (err) {
+                        if (err)
+                            console.log(err);
+                    });
                 });
-            });
+        }
 
-        if(page.should_amp) {
+        if(config.generateAMP && page.should_amp) {
             let amphtml = ejs.renderFile('./views/amppage.ejs',
                 {
                     layout: false,
