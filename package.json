@@ -1,7 +1,7 @@
 {
   "name": "pantry-cms",
   "version": "1.0.0",
-  "description": "The front end developer CMS.",
+  "description": "A web development framework.",
   "main": "app.js",
   "scripts": {
     "preinstall": "npm install -g pm2",
