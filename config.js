@@ -1,4 +1,5 @@
 const config = {
+    appName: "pantry",
     siteUrl: "http://localhost:5000", // No trailing slash
     sitePort: 5000,
     siteName: "Pantry",

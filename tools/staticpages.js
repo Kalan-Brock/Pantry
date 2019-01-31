@@ -63,7 +63,7 @@ for(let i=0; i<pages.length; i++) {
                 });
             });
 
-        if(config.generateAMP && [i].should_amp) {
+        if(config.generateAMP && pages[i].should_amp) {
             let amphtml = ejs.renderFile('./views/amppage.ejs',
                 {
                     layout: false,
@@ -133,7 +133,7 @@ if(config.hasBlog) {
                     });
                 });
 
-            if(config.generateAMP && [i].should_amp) {
+            if(config.generateAMP && posts[i].should_amp) {
                 let amphtml = ejs.renderFile('./views/amppost.ejs',
                     {
                         layout: false,
