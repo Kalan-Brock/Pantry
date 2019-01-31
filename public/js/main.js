@@ -11,7 +11,7 @@
 console.log('Powered by pantry.');
 
 jQuery(document).ready( function($) {
-    var path = window.location.pathname;
+    var path = window.location.pathname.replace('/amp', '');
     var activenav;
 
     switch(path) {

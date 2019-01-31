@@ -43,7 +43,7 @@ function scripts() {
             './node_modules/jquery/dist/jquery.min.js',
             './node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
             './assets/js/custom.js'
-        ])
+        ])0
         .pipe(plumber())
         .pipe(concat('main.js'))
         .pipe(gulp.dest('./public/js/'))
