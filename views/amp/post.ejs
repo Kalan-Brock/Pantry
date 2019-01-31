@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="canonical" href="/blog/<%= post.slug %>">
-    <title><%= config.siteName %> | <%= post.title %></title>
+    <title><%= global.gConfig.siteName %> | <%= post.title %></title>
     <link rel="stylesheet" href="/css/ampstyles.css">
 </head>
 <body class="post post-<%= post.slug %>">
-<%- include('global/header'); %>
+<%- include('../global/header'); %>
 <%- post.content %>
 <div class="container">
     <div class="row">
@@ -18,6 +18,6 @@
         </div>
     </div>
 </div>
-<%- include('global/footer'); %>
+<%- include('../global/footer'); %>
 </body>
 </html>

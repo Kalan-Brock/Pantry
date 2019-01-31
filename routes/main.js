@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const config = require('../config');
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 const adapter = new FileSync('db.json');
@@ -10,7 +9,6 @@ const db = low(adapter);
 router.get('/', (req, res) => {
     res.render('home', {
         layout: false,
-        config: config,
         pageTitle: "Home"
     });
 });
@@ -25,7 +23,6 @@ router.get('/:page', (req, res, next) => {
 
     res.render(thepage.layout, {
         layout: false,
-        config: config,
         page: thepage
     });
 });
@@ -34,7 +31,6 @@ router.get('/:page', (req, res, next) => {
 router.get('*', function(req, res){
     res.status(404).render('404', {
         layout: false,
-        config: config,
         pageTitle: "Page Not Found"
     });
 });

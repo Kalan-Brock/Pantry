@@ -7,7 +7,7 @@
     <% if(post.should_amp) { %>
         <link rel="amphtml" href="/amp/blog/<%= post.slug %>">
     <% } %>
-    <title><%= config.siteName %> | <%= post.title %></title>
+    <title><%= global.gConfig.siteName %> | <%= post.title %></title>
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body class="post post-<%= post.slug %>">

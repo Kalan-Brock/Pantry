@@ -1,5 +1,7 @@
-const config = require('./config');
 const express = require('express');
+// development, testing, staging, production
+process.env.NODE_ENV = 'development';
+const config = require('./config/config.js');
 const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 const bodyParser = require("body-parser");
@@ -48,13 +50,15 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 // Routes Configuration
-if(config.hasBlog) {
+if(global.gConfig.hasBlog) {
     const blogroutes = require('./routes/blog');
     app.use('/blog', blogroutes);
 }
 const adminroutes = require('./routes/admin');
 app.use('/admin', adminroutes);
+const formsroutes = require('./routes/forms');
+app.use('/forms', formsroutes);
 const mainroutes = require('./routes/main');
 app.use('/', mainroutes);
 
-const server = app.listen(config.sitePort, () => {});
+const server = app.listen(global.gConfig.sitePort, () => {});

@@ -1,4 +1,4 @@
-const config = require('./config');
+const config = require('./config/config.js');
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const plumber = require('gulp-plumber');
@@ -10,7 +10,7 @@ const ngrok = require('ngrok');
 
 function browserSync(done) {
     browsersync.init({
-        proxy: "localhost:" + config.sitePort
+        proxy: "localhost:" + global.gConfig.sitePort
     }, function(err, bs) {
         (async function() {
             const url = await ngrok.connect(3000);
@@ -97,7 +97,7 @@ function ampscripts() {
 }
 
 function staticfiles(done) {
-    if(config.generateStaticFiles) {
+    if(global.gConfig.generateStaticFiles) {
         exec('node ./tools/staticpages.js', {shell: false});
     }
     done();

@@ -1,6 +1,6 @@
-const config = require('../config.js');
+const config = require('../config/config.js');
 const exec = require('child_process').exec;
 
-exec('pm2 stop ' + config.appName);
-exec('pm2 start app.js --name "' + config.appName +'" --watch');
+exec('pm2 stop ' + global.gConfig.appName);
+exec('pm2 start app.js --name "' + global.gConfig.appName +'" --watch', {windowsHide: true});
 

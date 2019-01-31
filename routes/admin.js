@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const config = require('../config');
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 const adapter = new FileSync('db.json');
@@ -14,7 +13,6 @@ const ampify = require('ampify');
 router.get('/pages/create', (req, res) => {
     res.render('admin/pages/create', {
         layout: 'admin/layout',
-        config: config,
         pageTitle: "Create a Page"
     });
 });
@@ -61,11 +59,10 @@ router.post('/pages/create', (req, res) => {
         let path = "./public/optimized/" + page.slug + ".html";
         let amppath = "./public/amp/" + page.slug + ".html";
 
-        if(config.generateStaticFiles) {
+        if(global.gConfig.generateStaticFiles) {
             let optimizedhtml = ejs.renderFile('./views/' + page.layout + '.ejs',
                 {
                     layout: false,
-                    config: config,
                     page: page
                 },
                 {
@@ -80,11 +77,10 @@ router.post('/pages/create', (req, res) => {
                 });
         }
 
-        if(config.generateAMP && page.should_amp) {
+        if(global.gConfig.generateAMP && page.should_amp) {
             let amphtml = ejs.renderFile('./views/amp/page.ejs',
                 {
                     layout: false,
-                    config: config,
                     page: pages[i]
                 },
                 {
@@ -110,7 +106,6 @@ router.get('/pages/edit/:id', (req, res, next) => {
 
     res.render('admin/pages/edit', {
         layout: 'admin/layout',
-        config: config,
         pageTitle: "Edit " + thepage.title,
         page: thepage
     });
@@ -154,11 +149,10 @@ router.post('/pages/edit/:id', (req, res) => {
         if (page === 'undefined' || !page.should_cache)
             res.json(data);
 
-        if (config.generateStaticFiles) {
+        if (global.gConfig.generateStaticFiles) {
             let optimizedhtml = ejs.renderFile('./views/' + page.layout + '.ejs',
                 {
                     layout: false,
-                    config: config,
                     page: page
                 },
                 {
@@ -173,11 +167,10 @@ router.post('/pages/edit/:id', (req, res) => {
                 });
         }
 
-        if(config.generateAMP && page.should_amp) {
+        if(global.gConfig.generateAMP && page.should_amp) {
             let amphtml = ejs.renderFile('./views/amp/page.ejs',
                 {
                     layout: false,
-                    config: config,
                     page: pages[i]
                 },
                 {
@@ -202,7 +195,6 @@ router.get('/pages', (req, res) => {
 
     res.render('admin/pages/list', {
         layout: 'admin/layout',
-        config: config,
         pageTitle: "Pages",
         pages: pages
     });
@@ -212,7 +204,6 @@ router.get('/pages', (req, res) => {
 router.get('/', (req, res) => {
     res.render('admin/home', {
         layout: 'admin/layout',
-        config: config,
         pageTitle: "Dashboard"
     });
 });
@@ -221,7 +212,6 @@ router.get('/', (req, res) => {
 router.get('*', function(req, res){
     res.status(404).render('404', {
         layout: false,
-        config: config,
         pageTitle: "Page Not Found"
     });
 });
