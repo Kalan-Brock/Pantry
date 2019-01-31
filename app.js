@@ -1,6 +1,4 @@
 const express = require('express');
-// development, testing, staging, production
-process.env.NODE_ENV = 'development';
 const config = require('./config/config.js');
 const expressLayouts = require('express-ejs-layouts');
 const path = require('path');

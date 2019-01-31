@@ -20,6 +20,9 @@
 
   },
   "production": {
-
+    "siteUrl": "http://clientsite.com",
+    "sitePort": 5500,
+    "siteName": "My Website Name",
+    "siteTitle": "My Website Title"
   }
 }
