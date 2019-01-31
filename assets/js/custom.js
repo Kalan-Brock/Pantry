@@ -1,4 +1,4 @@
-console.log('Powered by pantry.');
+console.log('Powered by Pantry.');
 
 jQuery(document).ready( function($) {
     var path = window.location.pathname.replace('/amp', '');
