@@ -1,0 +1,15 @@
+nav.primary-navigation {
+  ul {
+    padding-left: 0;
+    list-style: none;
+
+    li {
+      display: inline-block;
+      margin-right: 10px;
+
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+}

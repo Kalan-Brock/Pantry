@@ -37,13 +37,24 @@ function css() {
         .pipe(browsersync.stream());
 }
 
+function ampcss() {
+    return gulp
+        .src("./assets/amp-scss/*.scss")
+        .pipe(plumber())
+        .pipe(sass({outputStyle: 'compressed'}))
+        .pipe(concat('ampstyles.css'))
+        .pipe(autoprefixer('last 2 versions'))
+        .pipe(gulp.dest("./public/css/"))
+        .pipe(browsersync.stream());
+}
+
 function scripts() {
     return gulp
         .src([
             './node_modules/jquery/dist/jquery.min.js',
             './node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
             './assets/js/custom.js'
-        ])0
+        ])
         .pipe(plumber())
         .pipe(concat('main.js'))
         .pipe(gulp.dest('./public/js/'))
@@ -59,11 +70,12 @@ function staticfiles(done) {
 
 function watchFiles() {
     gulp.watch("./assets/scss/**/*", css);
+    gulp.watch("./assets/amp-scss/**/*", ampcss);
     gulp.watch("./assets/js/**/*", scripts);
     gulp.watch("./views/**/*", gulp.series(staticfiles, browserSyncReload));
 }
 
-const build = gulp.series(gulp.parallel(css, scripts), staticfiles);
+const build = gulp.series(gulp.parallel(css, ampcss, scripts), staticfiles);
 const watch = gulp.parallel(watchFiles, browserSync);
 
 
