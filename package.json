@@ -9,12 +9,12 @@
   "main": "app.js",
   "scripts": {
     "preinstall": "npm install -g pm2",
-    "postinstall": "node setup/dbinit.js && node_modules/.bin/gulp",
+    "postinstall": "node setup/dbinit.js && ./node_modules/.bin/gulp build",
     "test": "mocha",
     "start": "pm2 start app.js --watch",
     "stop": "pm2 stop all && node tools/gitpush.js",
-    "build": "node setup/dbinit.js && node_modules/.bin/gulp",
-    "watch": "node_modules/.bin/gulp watch"
+    "build": "node setup/dbinit.js && ./node_modules/.bin/gulp build",
+    "watch": "./node_modules/.bin/gulp watch"
   },
   "keywords": [
     "dental",
