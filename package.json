@@ -7,7 +7,8 @@
     "start": "node tools/webserver.js",
     "stop": "pm2 stop all && node tools/gitpush.js",
     "build": "gulp build",
-    "watch": "gulp watch"
+    "watch": "gulp watch",
+    "dbsetup": "node setup/dbinit.js"
   },
   "dependencies": {
     "ampify": "^0.4.2",

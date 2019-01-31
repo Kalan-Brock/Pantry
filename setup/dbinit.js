@@ -65,3 +65,5 @@ if (users.value().length === 0) {
     console.log("Username: Administrator");
     console.log("Password: password");
 }
+
+console.log("Database initialized!  -  db.json");
