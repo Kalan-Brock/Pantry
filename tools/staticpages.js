@@ -64,7 +64,7 @@ for(let i=0; i<pages.length; i++) {
             });
 
         if(config.generateAMP && pages[i].should_amp) {
-            let amphtml = ejs.renderFile('./views/amppage.ejs',
+            let amphtml = ejs.renderFile('./views/amp/page.ejs',
                 {
                     layout: false,
                     config: config,
@@ -134,7 +134,7 @@ if(config.hasBlog) {
                 });
 
             if(config.generateAMP && posts[i].should_amp) {
-                let amphtml = ejs.renderFile('./views/amppost.ejs',
+                let amphtml = ejs.renderFile('./views/amp/post.ejs',
                     {
                         layout: false,
                         config: config,

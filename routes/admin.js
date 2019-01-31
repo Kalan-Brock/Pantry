@@ -81,7 +81,7 @@ router.post('/pages/create', (req, res) => {
         }
 
         if(config.generateAMP && page.should_amp) {
-            let amphtml = ejs.renderFile('./views/amppage.ejs',
+            let amphtml = ejs.renderFile('./views/amp/page.ejs',
                 {
                     layout: false,
                     config: config,
@@ -174,7 +174,7 @@ router.post('/pages/edit/:id', (req, res) => {
         }
 
         if(config.generateAMP && page.should_amp) {
-            let amphtml = ejs.renderFile('./views/amppage.ejs',
+            let amphtml = ejs.renderFile('./views/amp/page.ejs',
                 {
                     layout: false,
                     config: config,
