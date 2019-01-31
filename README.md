@@ -24,7 +24,7 @@ npm start
 
 ## To Dev
 
-gulp watch
+gulp watch or npm run watch
 
 ## View Your Project
 
