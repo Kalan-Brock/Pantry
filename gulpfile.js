@@ -106,7 +106,8 @@ function staticfiles(done) {
 function watchFiles() {
     gulp.watch("./assets/scss/**/*", css);
     gulp.watch("./assets/admin-scss/**/*", admincss);
-    gulp.watch("./assets/amp-scss/**/*", ampcss);
+    // Rebuild amp files if amp css is changed, since it gets inlined in the static files.
+    gulp.watch("./assets/amp-scss/**/*", gulp.series(ampcss, staticfiles));
     gulp.watch("./assets/js/custom.js", scripts);
     gulp.watch("./assets/js/admin.js", adminscripts);
     gulp.watch("./assets/js/amp.js", ampscripts);
