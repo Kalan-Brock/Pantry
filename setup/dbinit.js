@@ -54,7 +54,7 @@ if (users.value().length === 0) {
 
     users.push({
         id: userid,
-        name: "Administrator",
+        name: "admin",
         email: "admin@website.com",
         password: hash,
         created_on: thedate,
@@ -62,7 +62,7 @@ if (users.value().length === 0) {
     }).write();
 
     console.log("Primary admin account created.");
-    console.log("Username: Administrator");
+    console.log("Username: admin");
     console.log("Password: password");
 }
 

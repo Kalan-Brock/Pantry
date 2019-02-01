@@ -56,8 +56,8 @@ router.post('/pages/create', (req, res) => {
         if(page === 'undefined' || !page.should_cache)
             res.json(data);
 
-        let path = "./public/optimized/" + page.slug + ".html";
-        let amppath = "./public/amp/" + page.slug + ".html";
+        let path = "./public/cache/optimized/" + page.slug + ".html";
+        let amppath = "./public/cache/amp/" + page.slug + ".html";
 
         if(global.gConfig.generateStaticFiles) {
             let optimizedhtml = ejs.renderFile('./views/' + page.layout + '.ejs',
@@ -142,8 +142,8 @@ router.post('/pages/edit/:id', (req, res) => {
             })
             .write();
 
-        let path = "./public/optimized/" + req.body.slug + ".html";
-        let amppath = "./public/amp/" + req.body.slug + ".html";
+        let path = "./public/cache/optimized/" + req.body.slug + ".html";
+        let amppath = "./public/cache/amp/" + req.body.slug + ".html";
         let page = db.get('pages').find({id: theid}).value();
 
         if (page === 'undefined' || !page.should_cache)

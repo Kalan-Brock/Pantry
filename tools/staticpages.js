@@ -24,7 +24,7 @@ let html = ejs.renderFile('./views/home.ejs',
     },
     function(err, str)
     {
-        fs.outputFile("./public/optimized/index.html", str, function(err) {
+        fs.outputFile("./public/cache/optimized/index.html", str, function(err) {
             if(err)
                 console.log(err);
         });
@@ -38,8 +38,8 @@ let pages = db.get('pages').value();
 
 for(let i=0; i<pages.length; i++) {
     let slug = pages[i].slug;
-    let path = "./public/optimized/" + slug + ".html";
-    let amppath = "./public/amp/" + slug + ".html";
+    let path = "./public/cache/optimized/" + slug + ".html";
+    let amppath = "./public/cache/amp/" + slug + ".html";
     sitemap.add({url: '/' + slug, changefreq: 'weekly',  priority: 0.7});
 
 
@@ -97,7 +97,7 @@ if(global.gConfig.hasBlog) {
             async: false
         },
         function (err, str) {
-            fs.outputFile("./public/optimized/blog/index.html", str, function (err) {
+            fs.outputFile("./public/cache/optimized/blog/index.html", str, function (err) {
                 if (err)
                     console.log(err);
             });
@@ -108,8 +108,8 @@ if(global.gConfig.hasBlog) {
     for(let i=0; i<posts.length; i++) {
         if(global.gConfig.generateStaticFiles && posts[i].should_cache) {
             let slug = posts[i].slug;
-            let path = "./public/optimized/blog/" + slug + ".html";
-            let amppath = "./public/amp/blog/" + slug + ".html";
+            let path = "./public/cache/optimized/blog/" + slug + ".html";
+            let amppath = "./public/cache/amp/blog/" + slug + ".html";
             sitemap.add({url: '/blog/' + slug, changefreq: 'weekly',  priority: 0.5});
 
             let html = ejs.renderFile('./views/post.ejs',

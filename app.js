@@ -23,13 +23,13 @@ app.use((req, res, next) => {
         next();
 });
 
-app.use('/amp', express.static(path.join(__dirname, '/public/amp'), {
+app.use('/amp', express.static(path.join(__dirname, '/public/cache/amp'), {
     redirect: false,
     extensions: ['html']
 }));
 
-app.use('/', express.static(path.join(__dirname, '/public/optimized'), {
-    redirect: false,
+app.use('/', express.static(path.join(__dirname, '/public/cache/optimized'), {
+    redirect: true,
     extensions: ['html']
 }));
 
