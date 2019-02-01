@@ -90,7 +90,8 @@ module.exports = (html, options) => {
         const src = $(element).attr('src');
 
         if (!src) {
-            return $(element).remove();
+            //return $(element).remove();
+            return;
         }
 
         if (src.indexOf('//') === -1) {
