@@ -190,7 +190,7 @@ module.exports = (html, options) => {
         const ampElement = Object.assign(element, {
             name: `amp-${element.name}`,
         });
-        //$(element).attr('layout', 'responsive');
+        $(element).attr('layout', 'responsive');
         $(element).html($(ampElement).html());
     });
 
