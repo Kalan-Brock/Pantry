@@ -12,14 +12,9 @@
 </head>
 <body class="post post-<%= post.slug %>">
 <%- include('global/header'); %>
+<main>
 <%- post.content %>
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <pre><code>shown from: views/post.ejs</code></pre>
-        </div>
-    </div>
-</div>
+</main>
 <%- include('global/footer'); %>
 <script src="/js/custom.js"></script>
 </body>

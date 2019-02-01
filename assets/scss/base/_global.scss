@@ -7,20 +7,15 @@ html {
 }
 
 body {
-  min-height: 100vh;
-  position: relative;
-  margin: 0;
-  font-family: 'Open Sans', sans-serif;
-  padding-top: 100px;
-  padding-bottom: 100px;
-}
-
-.card {
-  height: 100%;
+  font-family: $text;
 }
 
 h1, h2, h3, h4, h5 {
-  font-family: 'Roboto', sans-serif;
+  font-family: $headers;
+}
+
+h1 {
+  margin-bottom: 40px;
 }
 
 p {
@@ -28,27 +23,24 @@ p {
 }
 
 a {
+  color: #636b6f;
+  font-weight: 600;
+  text-decoration: none;
 
   &:hover, &:active, &:visited {
-
+    text-decoration: none;
+    color: #636b6f;
   }
 
   &:hover {
 
   }
+
+  &.nav-item.active {
+    color: #9d1723;
+  }
 }
 
-a.btn {
-  margin: 20px 0;
-}
-
-footer.site-footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
-
-.code-box {
-  display: block;
-  margin-top: 40px;
+main {
+  padding-top: 100px;
 }

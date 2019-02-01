@@ -6,240 +6,115 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><%= global.gConfig.siteName %> | <%= global.gConfig.siteTitle %></title>
     <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        html, body {
+            color: #9d1723;
+            font-weight: 200;
+            height: 100vh;
+            margin: 0;
+        }
+
+        body {
+            background-color:#ffffff;
+        }
+
+        .full-height {
+            height: 100vh;
+        }
+
+        .flex-center {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
+
+        .position-ref {
+            position: relative;
+        }
+
+        .content {
+            text-align: center;
+        }
+
+        .title {
+            font-size: 90px;
+            font-family: 'Pacifico', cursive;
+        }
+
+        .m-b-md {
+            margin-bottom: 30px;
+        }
+
+        #rotate-words {
+            max-width:400px;
+            margin:auto;
+            padding:20% 0;
+            font-size:2.2em;
+            text-transform:uppercase;
+        }
+
+        #rotate-words span {
+            display:block;
+            height:50px;
+            font-size:.7em;
+            text-transform:lowercase;
+            opacity:.8;
+        }
+
+        #rotate-words div {
+            position:absolute;
+            opacity:0;
+            overflow:hidden;
+            left:10vw;
+            width:80vw;
+            line-height:1.2em;
+            animation: rotate-word 32s linear normal 0s;
+            color: #555555;
+            font-size: 30px;
+        }
+
+        @keyframes rotate-word {
+            0% { opacity: 0;  transform: translateX(0);filter:blur(10px);transform:scale(1.2)}
+            3% { opacity: 1;  transform: translateX(0);filter:blur(0px);transform:scale(.9)}
+            12% { opacity: 1; transform: translateX(0);filter:blur(0px);transform:scale(1)}
+            16% { opacity: 0; transform: translateX(0);filter:blur(10px);transform:scale(1.2)}
+            80% { opacity: 0}
+            100% { opacity: 0}
+        }
+
+        #rotate-words div:nth-child(2) { animation-delay: 4s}
+        #rotate-words div:nth-child(3) { animation-delay: 8s}
+        #rotate-words div:nth-child(4) { animation-delay: 12s}
+        #rotate-words div:nth-child(5) { animation-delay: 16s}
+        #rotate-words div:nth-child(6) { animation-delay: 20s}
+        #rotate-words div:nth-child(7) { animation-delay: 24s}
+        #rotate-words div:nth-child(8) { animation-delay: 28s}
+
+        @keyframes author {
+            0% { opacity: 0;  transform: translateY(100px);filter:blur(10px);transform: scaleY(2)}
+            20% { opacity:0; transform: translateY(200px);filter:blur(10px); transform: scaleY(2)}
+            30% { opacity:1; transform: translateY(0);filter:blur(0px);transform: scaleY(1)}
+            90% { opacity:1; transform: translateY(0);filter:blur(0px);transform: scaleY(.9)}
+            100% { opacity:0; transform: translateY(0);filter:blur(10px);transform: scale(2)}
+        }
+    </style>
 </head>
-<body>
-<%- include('global/header'); %>
-<div class="container">
-    <header class="jumbotron">
-        <h1 class="display-4">A Web Development Framework</h1>
-        <p class="lead">Pantry is written entirely with Javascript and is powered by a single, flat-file database.  Before getting started, you'll just need to install Node.js and NPM.  You can get them both <a href="https://nodejs.org" target="_blank">here</a>.</p>
-        <p class="lead">Clone Repo<br><code>$ git clone https://github.com/Kalan-Brock/Pantry.git myproject</code></p>
-        <p class="lead">Quick Start<br><code><small>Install packages, start server, go right to Browser Sync.</small><br>$ npm install && npm start && gulp watch</code></p>
-        <p class="lead">Finished Working?<br><code><small>Stop pm2 servers, auto push to git remote if gitAutoVersion configuration set.</small><br>$ npm stop</code></p>
-        <!--<a href="#" class="btn btn-primary btn-lg">Call to action!</a>-->
-    </header>
-    <div class="row text-center">
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card">
-                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Node.js</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Find Out More!</a>
-                </div>
-            </div>
+<body class="page page-home">
+<div class="flex-center position-ref full-height">
+    <%- include('global/header'); %>
+
+    <div class="content">
+        <div class="title m-b-md">
+            Pantry
         </div>
 
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card">
-                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Lowdb</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Find Out More!</a>
-                </div>
+        <div class="description">
+            <div id="rotate-words">
+                <div>A Web Development Framework<br />  <span>Powered by Javascript</span></div>
             </div>
         </div>
-
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card">
-                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">PM2 &amp; Express</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Find Out More!</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card">
-                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Gulp</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Find Out More!</a>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="row text-center">
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card">
-                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">EJS + EJS Layouts</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Find Out More!</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card">
-                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Auto AMP</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Find Out More!</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card">
-                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Auto Cache</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Find Out More!</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card">
-                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Gzip</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Find Out More!</a>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="row text-center">
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card">
-                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Sass</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Find Out More!</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card">
-                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">ngrok</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Find Out More!</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card">
-                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Browser Sync</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Find Out More!</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card">
-                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Git Versioning</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Find Out More!</a>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="row text-center">
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card">
-                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Auto XML Sitemaps</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Find Out More!</a>
-                </div>
-            </div>
-        </div>
-        <!--
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card">
-                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">ngrok</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Find Out More!</a>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card">
-                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Browser Sync</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Find Out More!</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card">
-                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Git Versioning</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Find Out More!</a>
-                </div>
-            </div>
-        </div>-->
-
     </div>
 </div>
-
-<%- include('global/footer'); %>
 <script src="/js/custom.js"></script>
 </body>
 </html>

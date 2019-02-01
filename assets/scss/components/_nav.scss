@@ -1,15 +1,12 @@
-nav.primary-navigation {
-  ul {
-    padding-left: 0;
-    list-style: none;
+.links > a {
+  color: #636b6f;
+  padding: 0 15px;
+  font-size: 16px;
+  font-weight: 600;
+}
 
-    li {
-      display: inline-block;
-      margin-right: 10px;
-
-      a {
-        text-decoration: none;
-      }
-    }
-  }
+.top-right {
+  position: absolute;
+  right: 30px;
+  top: 18px;
 }

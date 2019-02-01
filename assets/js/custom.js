@@ -19,5 +19,5 @@ jQuery(document).ready( function($) {
             break;
     }
 
-    $('li.nav-item.' + activenav).addClass('active');
+    $('a.nav-item.' + activenav).addClass('active');
 });

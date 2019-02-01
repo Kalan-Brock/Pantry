@@ -11,7 +11,7 @@ const fs = require('fs-extra');
 
 function browserSync(done) {
     browsersync.init({
-        proxy: "localhost:" + global.gConfig.sitePort
+        proxy: global.gConfig.siteUrl + ":" + global.gConfig.sitePort
     }, function(err, bs) {
         (async function() {
             const url = await ngrok.connect(3000);

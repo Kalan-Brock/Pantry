@@ -9,6 +9,7 @@
 </head>
 <body>
 <%- include('global/header'); %>
+<main>
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -22,23 +23,18 @@
     %>
         <div class="row">
             <div class="col-12">
-                <h2><a href="/blog/<%= posts[i].slug %>"><%= posts[i].title %></a></h2>
-                <blockquote class="blockquote">
-                    <footer class="blockquote-footer">written by <cite title="Post Author"><%= posts[i].author %></cite> on <%= date_readable %></footer>
-                </blockquote>
-                <p class="mb-0 excerpt"><%= posts[i].excerpt %></p>
-                <a class="btn btn-primary" href="/blog/<%= posts[i].slug %>">Read More</a>
+                <div class="post post-<%= posts[i].slug %>">
+                    <h2><a href="/blog/<%= posts[i].slug %>"><%= posts[i].title %></a></h2>
+                    <blockquote class="blockquote">
+                        <footer class="blockquote-footer">written by <cite title="Post Author"><%= posts[i].author %></cite> on <%= date_readable %></footer>
+                    </blockquote>
+                    <p class="mb-0 excerpt"><%= posts[i].excerpt %></p>
+                </div>
             </div>
         </div>
     <% } %>
 </div>
-<div class="container code-box">
-    <div class="row">
-        <div class="col-12">
-            <pre><code>shown from: views/blog.ejs</code></pre>
-        </div>
-    </div>
-</div>
+</main>
 <%- include('global/footer'); %>
 <script src="/js/custom.js"></script>
 </body>

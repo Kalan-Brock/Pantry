@@ -12,14 +12,9 @@
 </head>
 <body class="page page-<%= page.slug %>">
 <%- include('global/header'); %>
-<%- page.content %>
-<div class="container code-box">
-    <div class="row">
-        <div class="col-12">
-            <pre><code>shown from: views/<%= page.layout %>.ejs</code></pre>
-        </div>
-    </div>
-</div>
+<main>
+    <%- page.content %>
+</main>
 <%- include('global/footer'); %>
 <script src="/js/custom.js"></script>
 </body>
