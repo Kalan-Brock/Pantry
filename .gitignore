@@ -3,6 +3,6 @@
 package-lock.json
 node_modules/
 db.json
-public/optimized/
-public/amp/
+public/cache/optimized/
+public/cache/amp/
 public/sitemap.xml
