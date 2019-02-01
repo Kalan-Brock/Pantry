@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="canonical" href="/blog/<%= post.slug %>">
     <title><%= global.gConfig.siteName %> | <%= post.title %></title>
+    <!-- AMP fonts must be loaded outside of our stylesheet unless using @fontface. -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
     <link rel="stylesheet" href="/css/ampstyles.css">
 </head>
 <body class="post post-<%= post.slug %>">

@@ -5,7 +5,7 @@
     "postinstall": "node setup/dbinit.js && gulp build",
     "test": "mocha",
     "start": "node tools/webserver.js",
-    "stop": "pm2 stop all && node tools/gitpush.js",
+    "stop": "node tools/stop.js && node tools/gitpush.js",
     "build": "gulp build",
     "watch": "gulp watch",
     "dbsetup": "node setup/dbinit.js"
@@ -14,14 +14,19 @@
     "ampify": "^0.4.2",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "cheerio": "^1.0.0-rc.2",
+    "clean-css": "^4.2.1",
     "compression": "^1.7.3",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "express-ejs-layouts": "^2.5.0",
+    "image-size": "^0.7.1",
     "lodash": "^4.17.11",
     "lowdb": "^1.0.0",
+    "request": "^2.88.0",
     "shortid": "^2.2.14",
-    "sitemap": "^2.1.0"
+    "sitemap": "^2.1.0",
+    "url": "^0.11.0"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.6.3",

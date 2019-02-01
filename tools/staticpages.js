@@ -5,7 +5,7 @@ const adapter = new FileSync('db.json');
 const db = low(adapter);
 const fs = require('fs-extra');
 const ejs = require("ejs");
-const ampify = require('ampify');
+const ampy = require('../modules/ampy');
 const sm = require('sitemap');
 
 let sitemap = sm.createSitemap ({
@@ -72,7 +72,7 @@ for(let i=0; i<pages.length; i++) {
                     async: false
                 },
                 function (err, str) {
-                    fs.outputFile(amppath, ampify(str, {cwd: 'public'}));
+                    fs.outputFile(amppath, ampy(str, {cwd: './public'}));
                 });
         }
     }
@@ -139,7 +139,7 @@ if(global.gConfig.hasBlog) {
                         async: false
                     },
                     function (err, str) {
-                        fs.outputFile(amppath, ampify(str, {cwd: 'public'}));
+                        fs.outputFile(amppath, ampy(str, {cwd: './public'}));
                     });
             }
         }
