@@ -1,5 +1,6 @@
 {
   "private": true,
+  "version": "1.0.0",
   "scripts": {
     "preinstall": "npm install -g pm2",
     "postinstall": "node setup/dbinit.js && gulp build",

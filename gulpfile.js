@@ -7,6 +7,7 @@ const concat = require('gulp-concat');
 const browsersync = require('browser-sync').create();
 const exec = require('child_process').exec;
 const ngrok = require('ngrok');
+const fs = require('fs-extra');
 
 function browserSync(done) {
     browsersync.init({
@@ -23,6 +24,11 @@ function browserSync(done) {
   
 function browserSyncReload(done) {
     browsersync.reload();
+    done();
+}
+
+function flushcache(done) {
+    fs.remove('./public/cache');
     done();
 }
 
@@ -98,7 +104,7 @@ function ampscripts() {
 
 function staticfiles(done) {
     if(global.gConfig.generateStaticFiles) {
-        exec('node ./tools/staticpages.js', {shell: false});
+        exec('node ./tools/staticpages.js', { detached: true, windowsHide: true });
     }
     done();
 }
@@ -106,18 +112,18 @@ function staticfiles(done) {
 function watchFiles() {
     gulp.watch("./assets/scss/**/*", css);
     gulp.watch("./assets/admin-scss/**/*", admincss);
-    // Rebuild amp files if amp css is changed, since it gets inlined in the static files.
-    gulp.watch("./assets/amp-scss/**/*", gulp.series(ampcss, staticfiles));
+    gulp.watch("./assets/amp-scss/**/*", gulp.series(ampcss, flushcache, staticfiles));
     gulp.watch("./assets/js/custom.js", scripts);
     gulp.watch("./assets/js/admin.js", adminscripts);
     gulp.watch("./assets/js/amp.js", ampscripts);
-    gulp.watch("./views/**/*", gulp.series(staticfiles, browserSyncReload));
+    gulp.watch("./views/**/*", gulp.series(flushcache, staticfiles, browserSyncReload));
 }
 
-const build = gulp.series(css, admincss, ampcss, scripts, adminscripts, ampscripts, staticfiles);
+const build = gulp.series(css, admincss, ampcss, scripts, adminscripts, ampscripts, flushcache, staticfiles);
 const watch = gulp.parallel(watchFiles, browserSync);
 
-
+exports.flushcache = flushcache;
+exports.staticfiles = staticfiles;
 exports.css = css;
 exports.scripts = scripts;
 exports.build = build;
