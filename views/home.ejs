@@ -70,12 +70,15 @@
             line-height:1.2em;
             animation: rotate-word 32s linear normal 0s;
             animation-fill-mode: forwards;
-            color: #555555;
+            -webkit-animation-fill-mode: forwards;
+            color: #000000;
             font-size: 30px;
         }
 
         #rotate-words div.last {
-            animation: rotate-word-last 32s linear normal 0s;
+            animation-name: rotate-word-last;
+            animation-duration: 1s;
+            animation-fill-mode: forwards;
         }
 
         @keyframes rotate-word {
@@ -88,9 +91,8 @@
         }
 
         @keyframes rotate-word-last {
-            0% { opacity: 0;  transform: translateX(0);filter:blur(10px);transform:scale(1.2)}
-            3% { opacity: 1;  transform: translateX(0);filter:blur(0px);transform:scale(.9)}
-            12% { opacity: 1; transform: translateX(0);filter:blur(0px);transform:scale(1)}
+            from { opacity: 0;  transform: translateX(0);filter:blur(10px);transform:scale(1.2)}
+            to { opacity: 1; transform: translateX(0);filter:blur(0px);transform:scale(1)}
         }
 
         #rotate-words div:nth-child(2) { animation-delay: 4s}
@@ -100,14 +102,6 @@
         #rotate-words div:nth-child(6) { animation-delay: 20s}
         #rotate-words div:nth-child(7) { animation-delay: 24s}
         #rotate-words div:nth-child(8) { animation-delay: 28s}
-
-        @keyframes author {
-            0% { opacity: 0;  transform: translateY(100px);filter:blur(10px);transform: scaleY(2)}
-            20% { opacity:0; transform: translateY(200px);filter:blur(10px); transform: scaleY(2)}
-            30% { opacity:1; transform: translateY(0);filter:blur(0px);transform: scaleY(1)}
-            90% { opacity:1; transform: translateY(0);filter:blur(0px);transform: scaleY(.9)}
-            100% { opacity:0; transform: translateY(0);filter:blur(10px);transform: scale(2)}
-        }
     </style>
 </head>
 <body class="page page-home">
