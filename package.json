@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "scripts": {
     "preinstall": "npm install -g pm2",
-    "postinstall": "node setup/dbinit.js && gulp build",
+    "postinstall": "node tools/dbinit.js && gulp build",
     "test": "mocha",
     "start": "node tools/webserver.js",
     "stop": "node tools/stop.js && node tools/gitpush.js",
     "build": "gulp build",
     "watch": "gulp watch",
-    "dbsetup": "node setup/dbinit.js"
+    "dbsetup": "node tools/dbinit.js"
   },
   "dependencies": {
     "ampify": "^0.4.2",
