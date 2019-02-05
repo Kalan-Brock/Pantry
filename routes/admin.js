@@ -8,6 +8,7 @@ const shortid = require('shortid');
 const fs = require('fs-extra');
 const ejs = require('ejs');
 const ampify = require('ampify');
+const simpleGit = require('simple-git')('../');
 
 // Pages Routes
 router.get('/pages/create', (req, res) => {

@@ -21,7 +21,7 @@ db.defaults({
             "should_cache": true,
             "should_amp": true,
             "meta_keywords": "example, page",
-            "meta_description": "Pantry CMS example page.",
+            "meta_description": "Pantry example page.",
             "canonical": ""
         }
     ],
@@ -43,7 +43,8 @@ db.defaults({
             "canonical": ""
         }
     ],
-    form_submissions: []
+    form_submissions: [],
+    git_history: []
 }).write();
 
 let users = db.get('users');
