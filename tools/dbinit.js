@@ -43,8 +43,7 @@ db.defaults({
             "canonical": ""
         }
     ],
-    form_submissions: [],
-    git_history: []
+    form_submissions: []
 }).write();
 
 let users = db.get('users');
