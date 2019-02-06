@@ -2,7 +2,7 @@
 
 Pantry is a web development framework. It's written entirely with Javascript and is powered by a single, flat-file database. Pantry's speed comes from being able to generate static, optimized files to serve on the fly. When you create or update posts and pages, these cache resources are handled for you. This with the benefit of built-in compression help make one fast website.
 
-Pantry is ideal for small - medium sized companies that sell services, rather than products.  It works exceptionally well for those sites that run AdWords campaigns and use many landing pages. Pantry comes packaged with focus on SEO standards, HIPPA compliance, accessibility standards, visitor to client/patient/customer conversion, and an exemplary cross-device user experience - in a "less is more" development environment.
+Pantry is ideal for small - medium sized companies that sell services, rather than products.  It works exceptionally well for those sites that run AdWords campaigns and use many landing pages. Pantry comes packaged with focus on SEO standards, HIPAA compliance, accessibility standards, visitor to client/patient/customer conversion, and an exemplary cross-device user experience - in a "less is more" development environment.
 
 We are still in early development, so check back!
 
