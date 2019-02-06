@@ -92,7 +92,7 @@ Some basic site-wide configs can be found in config.json.  Configuration availab
 
 Environment can bet set in config/config.js.
 
-#TO DO
+## TO DO
 
 - Minimal, Secure Authentication
 - Implement SparkPost for email delivery.
