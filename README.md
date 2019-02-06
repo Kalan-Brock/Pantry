@@ -88,7 +88,7 @@ ngrok UI:  http://localhost:4040
 
 ## Configurations
 
-Some basic site-wide configs can be found in config.json.  Configuration available in four groups (development, testing, staging, production).  Use development as the configuration base, and any overrides go into their prospective group.
+Some basic site-wide configs can be found in config.json.  Configuration available in four groups (development, testing, staging, production).  Use development as the configuration base, and any overrides go into their associated group.
 
 #TO DO
 
