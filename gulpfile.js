@@ -14,7 +14,7 @@ function browserSync(done) {
         proxy: global.gConfig.siteUrl
     }, function(err, bs) {
         (async function() {
-            const url = await ngrok.connect(3000);
+            const url = await ngrok.connect(global.gConfig.sitePort);
         })();
 
         process.stdout.write("ngrok: http://localhost:4040" + "\r");

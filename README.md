@@ -90,7 +90,11 @@ ngrok UI:  http://localhost:4040
 
 Some basic site-wide configs can be found in config.json.  Configuration available in four groups (development, testing, staging, production).  Use development as the configuration base, and any overrides go into their associated group.
 
+Environment can bet set in config/config.js.
+
 #TO DO
 
 - Minimal, Secure Authentication
 - Implement SparkPost for email delivery.
+- Finish page and post editor.
+- Image minifying, auto img srcset.
