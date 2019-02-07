@@ -11,23 +11,16 @@
 console.log('Powered by Pantry.');
 
 jQuery(document).ready( function($) {
-    var path = window.location.pathname.replace('/amp', '');
-    var activenav;
+    var path = window.location.pathname;
 
-    switch(path) {
-        case '/':
-            activenav = 'home';
-            break;
-        case '/example':
-            activenav = 'example';
-            break;
-        case '/blog':
-            activenav = 'blog';
-            break;
-        default:
-            activenav = 'blog';
-            break;
-    }
+    if(path.substr(-1) === '/')
+        path = path.slice(0, -1);
 
-    $('a.nav-item.' + activenav).addClass('active');
+    if(path.indexOf('/blog') > -1)
+        path = '/blog';
+
+    if(path === '')
+        path = '/';
+
+    $("a.nav-item[href='" + path + "']").addClass('active');
 });
