@@ -13,7 +13,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
 
-// Serve static html files without file extension only.
 app.use((req, res, next) => {
     if (req.originalUrl.endsWith('.html'))
         res.redirect(301, req.originalUrl.slice(0, -5));

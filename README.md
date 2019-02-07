@@ -52,25 +52,25 @@ $ npm stop
 #### Gulp Commands
 Launch browser sync and ngrok, and gulp will begin to watch assets and files for changes.
 
-```
+```bash
 $ gulp watch
 ```
 
 Build the production assets and cache without launching BrowserSync.
 
-```
+```bash
 $ gulp build
 ```
 
 Flush the site cache.
 
-```
+```bash
 $ gulp flushcache
 ```
 
 Generate a new set of static files in the cache.
 
-```
+```bash
 $ gulp staticfiles
 ```
 
