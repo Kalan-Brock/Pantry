@@ -5,7 +5,7 @@ const adapter = new FileSync('db.json');
 const db = low(adapter);
 const fs = require('fs-extra');
 const ejs = require("ejs");
-const ampy = require('../modules/ampy');
+const ampy = require('../models/ampy');
 const sm = require('sitemap');
 
 let sitemap = sm.createSitemap ({

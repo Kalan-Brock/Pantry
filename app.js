@@ -5,6 +5,8 @@ const path = require('path');
 const bodyParser = require("body-parser");
 const app = express();
 const compression = require('compression');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 
 // Gzip compression
 app.use(compression());
