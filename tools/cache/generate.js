@@ -13,8 +13,10 @@ let sitemap = sm.createSitemap ({
     cacheTime: 600000
 });
 
+let theme = global.gConfig.theme;
+
 // The homepage.
-let html = ejs.renderFile('./views/home.ejs',
+let html = ejs.renderFile('./views/' + theme + '/home.ejs',
     {
         layout: false
     },
@@ -45,7 +47,7 @@ for(let i=0; i<pages.length; i++) {
 
     if(global.gConfig.generateStaticFiles && pages[i].should_cache) {
 
-        let html = ejs.renderFile('./views/' + pages[i].layout + '.ejs',
+        let html = ejs.renderFile('./views/' + theme + '/' + pages[i].layout + '.ejs',
             {
                 layout: false,
                 page: pages[i]
@@ -62,7 +64,7 @@ for(let i=0; i<pages.length; i++) {
             });
 
         if(global.gConfig.generateAMP && pages[i].should_amp) {
-            let amphtml = ejs.renderFile('./views/amp/page.ejs',
+            let amphtml = ejs.renderFile('./views/' + theme + '/amp/page.ejs',
                 {
                     layout: false,
                     page: pages[i]
@@ -86,7 +88,7 @@ if(global.gConfig.hasBlog) {
         posts = {};
     }
 
-    let bloghtml = ejs.renderFile('./views/blog.ejs',
+    let bloghtml = ejs.renderFile('./views/' + theme + '/blog.ejs',
         {
             layout: false,
             pageTitle: "Blog",
@@ -112,7 +114,7 @@ if(global.gConfig.hasBlog) {
             let amppath = "./public/cache/amp/blog/" + slug + ".html";
             sitemap.add({url: '/blog/' + slug, changefreq: 'weekly',  priority: 0.5});
 
-            let html = ejs.renderFile('./views/post.ejs',
+            let html = ejs.renderFile('./views/' + theme + '/post.ejs',
                 {
                     layout: false,
                     post: posts[i]
@@ -129,7 +131,7 @@ if(global.gConfig.hasBlog) {
                 });
 
             if(global.gConfig.generateAMP && posts[i].should_amp) {
-                let amphtml = ejs.renderFile('./views/amp/post.ejs',
+                let amphtml = ejs.renderFile('./views/' + theme + '/amp/post.ejs',
                     {
                         layout: false,
                         post: posts[i]

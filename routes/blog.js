@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
         posts = {};
     }
 
-    res.render('blog', {
+    res.render(global.gConfig.theme + '/blog', {
         layout: false,
         pageTitle: "Blog",
         posts: posts
@@ -28,7 +28,7 @@ router.get('/:post', (req, res, next) => {
         return next();
     }
 
-    res.render('post', {
+    res.render(global.gConfig.theme + '/post', {
         layout: false,
         post: thepost
     });
@@ -36,7 +36,7 @@ router.get('/:post', (req, res, next) => {
 
 // 404 - Keep as last route.
 router.get('*', function(req, res){
-    res.status(404).render('404', {
+    res.status(404).render(global.gConfig.theme + '/404', {
         layout: false,
         pageTitle: "Page Not Found"
     });

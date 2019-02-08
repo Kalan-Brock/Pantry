@@ -7,7 +7,7 @@ const db = low(adapter);
 
 // Home
 router.get('/', (req, res) => {
-    res.render('home', {
+    res.render(global.gConfig.theme + '/home', {
         layout: false,
         pageTitle: "Home"
     });
@@ -21,7 +21,7 @@ router.get('/:page', (req, res, next) => {
         return next();
     }
 
-    res.render(thepage.layout, {
+    res.render(global.gConfig.theme + '/' + thepage.layout, {
         layout: false,
         page: thepage
     });
@@ -29,7 +29,7 @@ router.get('/:page', (req, res, next) => {
 
 // 404 - Keep as last route.
 router.get('*', function(req, res){
-    res.status(404).render('404', {
+    res.status(404).render(global.gConfig.theme + '/404', {
         layout: false,
         pageTitle: "Page Not Found"
     });
