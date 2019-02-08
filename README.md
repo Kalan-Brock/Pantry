@@ -96,7 +96,9 @@ ngrok UI:  http://localhost:4040
 
 Some basic site-wide configs can be found in config.json.  Configuration available in four groups (development, testing, staging, production).  Use development as the configuration base, and any overrides go into their associated group.
 
-Environment can bet set in config/config.js.
+Environment can bet set in .env file.
+
+Other sensitive information, such as session secret and api keys for third party services can also be set in .env file.
 
 ## TO DO
 
