@@ -67,6 +67,7 @@ var sessionOptions = {
     saveUninitialized: false,
 };
 
+
 if (process.env.NODE_ENV === 'production') {
     app.set('trust proxy', 1); // trust first proxy
     sessionOptions.cookie.secure = true; // serve secure cookies for https
