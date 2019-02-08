@@ -1,8 +1,5 @@
 const _ = require('lodash');
 
-// development, testing, staging, production
-process.env.NODE_ENV = 'development';
-
 // module variables
 const config = require('../config.json');
 const defaultConfig = config.development;

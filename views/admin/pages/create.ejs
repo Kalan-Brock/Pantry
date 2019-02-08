@@ -23,7 +23,7 @@
 </div>
 
 <%- contentFor('pagescripts') %>
-<script src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=<%= global.gConfig.tinymceApiKey %>'></script>
+<script src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=<%= process.env.TINYMCE_KEY || "" %>'></script>
 <script>
     tinymce.init({
         selector: '#content',

@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
-const adapter = new FileSync('db.json');
+const adapter = new FileSync('data/db.json');
 const db = low(adapter);
 const shortid = require('shortid');
 
@@ -67,4 +67,4 @@ if (users.value().length === 0) {
     console.log("Password: password");
 }
 
-console.log("Database initialized!  -  db.json");
+console.log("Database initialized!  -  /data/db.json");

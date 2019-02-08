@@ -2,7 +2,9 @@
 .idea/
 package-lock.json
 node_modules/
-db.json
+.env
 public/cache/optimized/
 public/cache/amp/
 public/sitemap.xml
+data/db.json
+data/sessions.json
