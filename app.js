@@ -1,5 +1,5 @@
 const express = require('express');
-const config = require('./config/config.js');
+const config = require('./config/config');
 const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 const bodyParser = require("body-parser");
@@ -49,10 +49,14 @@ if(global.gConfig.hasBlog) {
     const blogroutes = require('./routes/blog');
     app.use('/blog', blogroutes);
 }
-const adminroutes = require('./routes/admin');
-app.use('/admin', adminroutes);
-const formsroutes = require('./routes/forms');
-app.use('/forms', formsroutes);
+if(global.gConfig.hasAuth) {
+    const authroutes = require('./routes/auth');
+    app.use('/auth', authroutes);
+    const adminroutes = require('./routes/admin');
+    app.use('/admin', adminroutes);
+    const formsroutes = require('./routes/forms');
+    app.use('/forms', formsroutes);
+}
 const mainroutes = require('./routes/main');
 app.use('/', mainroutes);
 

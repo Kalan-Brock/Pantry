@@ -57,6 +57,7 @@ if (users.value().length === 0) {
         name: "admin",
         email: "admin@website.com",
         password: hash,
+        access_level: 3,
         created_on: thedate,
         last_updated: thedate
     }).write();

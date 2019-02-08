@@ -9,6 +9,8 @@ const exec = require('child_process').exec;
 const ngrok = require('ngrok');
 const fs = require('fs-extra');
 
+let theme = global.gConfig.theme;
+
 function browserSync(done) {
     browsersync.init({
         proxy: global.gConfig.siteUrl
