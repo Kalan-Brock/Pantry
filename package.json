@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "scripts": {
     "preinstall": "npm install pm2@latest -g",
-    "postinstall": "node tools/dbinit.js && gulp build",
+    "postinstall": "node tools/database/init.js && gulp build",
     "test": "mocha",
-    "start": "node tools/webserver.js",
-    "stop": "node tools/stop.js && node tools/gitpush.js",
+    "start": "node tools/pm2/start.js",
+    "stop": "node tools/pm2/stop.js && node tools/git/autopush.js",
     "build": "gulp build",
     "watch": "gulp watch",
-    "dbsetup": "node tools/dbinit.js"
+    "dbsetup": "node tools/database/init.js"
   },
   "dependencies": {
     "ampify": "^0.4.2",

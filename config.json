@@ -11,7 +11,8 @@
     "monthNames": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
     "gitAutoVersion": false,
     "generateStaticFiles": true,
-    "generateAMP": true
+    "generateAMP": true,
+    "client_pronoun": "client"
   },
   "testing": {
 

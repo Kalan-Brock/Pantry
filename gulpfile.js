@@ -104,7 +104,7 @@ function ampscripts() {
 
 function staticfiles(done) {
     if(global.gConfig.generateStaticFiles) {
-        exec('node ./tools/staticpages.js', { detached: true, windowsHide: true });
+        exec('node ./tools/cache/generate.js', { detached: true, windowsHide: true });
     }
     done();
 }

@@ -1,4 +1,4 @@
-const config = require('../config/config.js');
+const config = require('../../config/config.js');
 const simpleGit = require('simple-git')('./');
 
 if(global.gConfig.gitAutoVersion) {
