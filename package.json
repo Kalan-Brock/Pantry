@@ -2,7 +2,6 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "preinstall": "npm install pm2@latest -g",
     "postinstall": "node tools/database/init.js && gulp build",
     "test": "mocha",
     "start": "node tools/pm2/start.js",
