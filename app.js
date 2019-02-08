@@ -4,14 +4,14 @@ const config = require('./config/config');
 const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 const bodyParser = require('body-parser');
-var expressValidator = require('express-validator');
+const expressValidator = require('express-validator');
 const compression = require('compression');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-var cookieParser = require('cookie-parser');
-var session = require('express-session');
-var store = require('connect-nedb-session')(session);
-var flash = require('connect-flash');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const store = require('connect-nedb-session')(session);
+const flash = require('connect-flash');
 
 const app = express();
 
@@ -59,12 +59,12 @@ app.use(expressValidator());
 app.use(cookieParser());
 
 // setup sessions
-var sessionOptions = {
+let sessionOptions = {
     store: new store({ filename: path.join('data', 'sessions.json')}),
     secret: process.env.SESSION_SECRET,
     cookie: {},
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: false
 };
 
 
