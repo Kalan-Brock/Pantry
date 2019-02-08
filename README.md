@@ -10,17 +10,23 @@ We are still in early development, so check back!
 
 You can get both [here](https://nodejs.org).
 
+- PM2 (For local development)
+
+```bash
+$ npm install pm2@latest -g
+```
+
 
 ## Installation
 ### Set Up And Use The Pantry Installer (Optional But Easiest)
 
-```
+```bash
 $ echo "alias pantry='git clone https://github.com/Kalan-Brock/Pantry.git . && npm install && npm start'" >> ~/.profile && source ~/.profile
 ```
 
 From an empty folder:
 
-```
+```bash
 $ pantry
 ```
 
@@ -28,24 +34,24 @@ $ pantry
 
 Clone respository, and change to the project directory.
 
-```
+```bash
 $ git clone https://github.com/Kalan-Brock/Pantry.git myproject && cd myproject
 ```
 
 Install Dependencies
-```
+```bash
 $ npm install
 ```
 
 ## Commands
 
 #### Start Server
-```
+```bash
 $ npm start
 ```
 
 #### Stop Server
-```
+```bash
 $ npm stop
 ```
 
