@@ -107,7 +107,7 @@ if(global.gConfig.hasBlog) {
 
     sitemap.add({url: '/blog/', changefreq: 'weekly',  priority: 0.8});
 
-    for(let i=0; i<posts.length; i++) {
+    for(let i = 0; i < posts.length; i++) {
         if(global.gConfig.generateStaticFiles && posts[i].should_cache) {
             let slug = posts[i].slug;
             let path = "./public/cache/optimized/blog/" + slug + ".html";

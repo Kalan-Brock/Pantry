@@ -9,7 +9,6 @@ const fs = require('fs-extra');
 const ejs = require('ejs');
 const ampify = require('ampify');
 
-// Pages Routes
 router.get('/pages/create', (req, res) => {
     res.render('admin/pages/create', {
         layout: 'admin/layout',

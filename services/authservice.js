@@ -64,7 +64,7 @@ exports.configurePassport = function(passport) {
         }
     });
 
-    // LocalStrategy uses username / password in the database for authentication.
+    // LocalStrategy uses email / password in the database for authentication.
     passport.use(new LocalStrategy(
         function(email, password, done) {
             // look for user in database
